@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="product-info">
+        <div class="product-detail">
+          <h2 class="product-title">Filson</h2>
+          <p class="product-description">
+            Journeyman leather-trimmed canvas backpack. Whether you're an avid
+            adventurer or daily commuter, Filson's durable
+            &laquo;Journeyman&raquo;<span class="show-more">show more...</span>
+          </p>
+          <span class="product-price">£ 220</span>
+        </div>
+        <div class="product-style">
+          <div class="product-color">
+            <h3>COLOR</h3>
+            <div class="options">
+              <div class="form-group">
+                <label
+                  class="show-color"
+                  for="color1"
+                  style="background-color: #b48350"
+                >
+                  <!-- <ion-icon name="checkmark-outline"></ion-icon> -->
+                </label>
+                <input
+                  type="radio"
+                  name="color"
+                  class="color"
+                  id="color1"
+                  hidden
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="show-color"
+                  for="color1"
+                  style="background-color: #232b3c"
+                >
+                </label>
+                <input
+                  type="radio"
+                  name="color"
+                  class="color"
+                  id="color1"
+                  hidden
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="show-color"
+                  for="color1"
+                  style="background-color: #ce5b25"
+                ></label>
+                <input
+                  type="radio"
+                  name="color"
+                  class="color"
+                  id="color1"
+                  hidden
+                />
+              </div>
+            </div>
+          </div>
+          <div class="product-size">
+            <h3>SIZE</h3>
+            <span>ONE SIZE</span>
+          </div>
+        </div>
+        <button class="btn btn-add-to-bag">ADD TO BAG</button>
+        <button class="btn btn-full-detail">VIEW FULL DETAILS</button>
+      </div>
+
+      <div class="product-preview">
+        <div class="btn-action">
+          <div class="zoom">
+            <ion-icon class="icon" name="add-circle-outline"></ion-icon>
+            <ion-icon class="icon" name="remove-circle-outline"></ion-icon>
+          </div>
+          <ion-icon class="icon" name="close-outline"></ion-icon>
+        </div>
+        <div class="preview-img">
+          <img
+            src="https://m.media-amazon.com/images/I/71BVYPMwG0L._AC_SX425_.jpg"
+            alt=""
+          />
+        </div>
+        <div class="list-img">
+          <img
+            src="https://m.media-amazon.com/images/I/71BVYPMwG0L._AC_SX425_.jpg"
+            alt=""
+            class="active"
+          />
+          <img
+            src="https://m.media-amazon.com/images/I/71ogaix4H4L._AC_SX425_.jpg"
+            alt=""
+          />
+          <img
+            src="https://m.media-amazon.com/images/I/619BHLCYOdL._AC_SX425_.jpg"
+            alt=""
+          />
+          <img
+            src="https://m.media-amazon.com/images/I/717jmSL3fBL._AC_SX425_.jpg"
+            alt=""
+          />
+          <img
+            src="https://m.media-amazon.com/images/I/71TPs-q7HAL._AC_SX425_.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
