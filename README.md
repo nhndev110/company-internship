@@ -38,3 +38,4 @@ Chức năng xem nhanh
 - Tính năng: Thay đổi hình ảnh ở phần preview, chọn màu sắc, hiển thị thêm phần mô tả sản phẩm, thông báo khi thêm sản phẩm vào giỏ hàng
 - Mẫu: https://dribbble.com/shots/2326634-Quick-view-on-a-online-store
 - Demo: https://nhndev110.github.io/company-internship/practice3-js/index.html
+
