@@ -1,0 +1,340 @@
+:root {
+  --bs-font-sans-serif: "Josefin Sans", sans-serif;
+  --bs-btn-border-radius: 0;
+}
+
+/* =========== COMMON =========== */
+h2.title {
+  font-size: 86px;
+  line-height: 88px;
+  font-weight: 700;
+}
+
+h2.title span.highlight {
+  position: relative;
+}
+
+h2.title span.highlight::before {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 10px;
+  background-color: var(--bs-primary);
+  z-index: -1;
+}
+
+p.subtitle {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p.subtitle.center {
+  width: 652px;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+/* =========== HEADER =========== */
+header.header {
+  position: relative;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+header.header .navbar .navbar-brand {
+  font-size: 26px;
+}
+
+header.header .navbar .navbar-brand img {
+  height: 35px;
+}
+
+header.header .navbar .navbar-collapse button {
+  font-weight: 700;
+  line-height: 28px;
+}
+
+header.header .navbar .navbar-nav a {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+header.header .banner {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+header.header .banner button {
+  font-weight: 700;
+  line-height: 28px;
+}
+
+/* =========== MAIN =========== */
+
+/* =========== ABOUT SECTION =========== */
+.about {
+  position: relative;
+  padding: 80px 0;
+}
+
+.about .content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 55%;
+  background-color: var(--bs-white);
+  padding: 40px;
+}
+
+.about .content .btn-involved {
+  font-weight: 700;
+}
+
+/* =========== OUR PROGRAMS SECTION =========== */
+.our-programs {
+  padding: 80px 0;
+}
+
+.our-programs .header {
+  padding: 0 40px;
+  text-align: center;
+}
+
+.our-programs .program-list {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 68px;
+  margin-top: 80px;
+}
+
+.our-programs .program-list .row:first-child {
+  margin-bottom: 16px;
+}
+
+.our-programs .card {
+  --bs-card-spacer-y: 0;
+}
+
+.our-programs .card .card-title {
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.our-programs .card .card-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* =========== OUR MISSION SECTION =========== */
+.our-mission {
+  padding: 60px 0;
+}
+
+.our-mission .content {
+  width: 620px;
+  margin: auto 0;
+}
+
+/* .our-mission .content .title {
+  font-size: 86px;
+  line-height: 88px;
+  font-weight: 700;
+  margin-bottom: 40px;
+} */
+
+/* =========== SUBSCRIBE SECTION =========== */
+.subscribe {
+  padding: 80px 0;
+}
+
+.subscribe .title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.subscribe .form-subscribe .form-floating {
+  width: 400px;
+  margin-right: 16px;
+}
+
+.subscribe .form-subscribe .form-floating label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.subscribe .form-subscribe .form-floating input {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.subscribe .form-subscribe .btn-subcribe {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+/* =========== OUR TEAM SECTION =========== */
+.our-team {
+  padding: 80px;
+}
+
+.our-team .title {
+  font-size: 55px;
+  line-height: 56px;
+}
+
+.our-team .team-members {
+  margin-left: 45px;
+}
+
+.our-team .team-members > .row + .row {
+  margin-top: 24px;
+}
+
+.our-team .team-members .card .card-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.our-team .team-members .card .card-text {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.our-team .team-members .member-img {
+  width: 104px;
+}
+
+/* =========== BLOG SECTION =========== */
+section.blog {
+  padding: 80px 40px;
+}
+
+section.blog .blog-list {
+  padding: 0 42px;
+  margin-top: 80px;
+}
+
+section.blog .blog-list .topic {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+section.blog .blog-list .card-title {
+  font-size: 22.5px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+section.blog .blog-list .card-text {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+section.blog .blog-list .btn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+section.blog .btn-all-blog {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-top: 80px;
+}
+
+/* =========== CAROUSEL SECTION =========== */
+section.carousel-list {
+  padding: 80px 0;
+}
+
+section.carousel-list .carousel-inner {
+  height: 525px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+section.carousel-list .carousel-inner img + img {
+  margin-left: 40px;
+}
+
+/* =========== FOOTER SECTION =========== */
+footer {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 0 40px;
+}
+
+footer .brand {
+  margin-bottom: 17px;
+}
+
+footer .brand-logo {
+  height: 54px;
+}
+
+footer .brand-text {
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+footer .icons ul li + li {
+  margin-left: 16px;
+}
+
+footer .icons .icon {
+  font-size: 24px;
+}
+
+footer .links ul li + li {
+  margin-top: 19px;
+}
+
+footer .form-title,
+footer .form-stay-up .form-floating {
+  margin-bottom: 17px;
+}
+
+footer .form-stay-up .form-floating .form-control {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+footer .form-stay-up .form-floating label {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+footer p.copyright {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 56px;
+}
