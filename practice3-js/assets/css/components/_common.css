@@ -1,0 +1,73 @@
+:root {
+  --bs-font-sans-serif: "Josefin Sans", sans-serif;
+  --bs-btn-border-radius: 0;
+}
+
+/* =========== COMMON =========== */
+h2.title {
+  font-size: 86px;
+  line-height: 88px;
+  font-weight: 700;
+}
+
+h2.title span.highlight {
+  position: relative;
+}
+
+h2.title span.highlight::before {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 10px;
+  background-color: var(--bs-primary);
+  z-index: -1;
+}
+
+p.subtitle {
+  margin-top: 12px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p.subtitle.center {
+  width: 652px;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
+
+/* =========== FORM =========== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+button, .btn {
+  border-radius: 0 !important;
+}
+
+button, .btn {
+  outline: none !important;
+}
+
+.form-floating > .form-control::placeholder {
+  color: revert;
+}
+
+.form-floating > .form-control:not(:focus)::placeholder {
+  color: transparent;
+}
+
+.btn-outline-primary {
+  background-color: var(--bs-white);
+}
+
+.navbar .navbar-nav .nav-item .nav-link.active {
+  color: var(--bs-primary);
+}
