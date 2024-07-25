@@ -3,27 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="assets/vendors/bootstrap-5.3.3/css/bootstrap.min.css"
-    />
+    <title>Limitless - Enabling emerging adults to adapt and succeed.</title>
+    <link rel="icon" href="assets/img/logo/logo-orange.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/custom.css" />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-5.3.3/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/utils/popup.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
-    <title>Document</title>
   </head>
   <body>
     <div class="wrapper">
@@ -43,14 +38,14 @@
                 LEARN MORE
               </a>
             </div>
-            <ion-icon name="close-outline" size="large"></ion-icon>
+            <box-icon class="icon-close" size="md" name="x"></box-icon>
           </div>
         </div>
       </div>
 
       <!-- HEADER SECTION -->
       <header
-        class="header"
+        id="header"
         style="background-image: url('assets/img/banner/image-1.png')"
       >
         <div class="container-fluid">
@@ -58,7 +53,7 @@
             <div class="container">
               <a
                 class="navbar-brand text-white d-flex align-items-center"
-                href="#!"
+                href="index.html"
               >
                 <img src="assets/img/logo/logo-white.png" alt="Limitless" />
                 <span>Limitless</span>
@@ -70,11 +65,7 @@
                 data-bs-target="#offcanvasWithBothOptions"
                 aria-controls="offcanvasWithBothOptions"
               >
-                <ion-icon
-                  name="menu-outline"
-                  size="large"
-                  class="text-white"
-                ></ion-icon>
+                <box-icon size="md" name="menu" color="#ffffff"></box-icon>
               </button>
               <div
                 class="offcanvas offcanvas-start bg-secondary"
@@ -94,22 +85,35 @@
                 <div class="offcanvas-body">
                   <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                      <a class="nav-link text-white active" href="#!">HOME</a>
+                      <a class="nav-link text-white" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-white" href="#!">ABOUT US</a>
+                      <a class="nav-link text-white" href="about.html">
+                        ABOUT US
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-white" href="#!">GET INVOLVED</a>
+                      <a class="nav-link text-white" href="get-involved.html">
+                        GET INVOLVED
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-white" href="#!">BLOG</a>
+                      <a class="nav-link text-white" href="blog.html">BLOG</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-white" href="#!">CONTACT US</a>
+                      <a class="nav-link text-white" href="contact-us.html">
+                        CONTACT US
+                      </a>
                     </li>
                   </ul>
-                  <button class="btn btn-primary rounded-0">DONATE</button>
+                  <div class="button-group">
+                    <a href="login.html" class="btn btn-primary fw-bold">
+                      Login
+                    </a>
+                    <a href="register.html" class="btn btn-outline-primary fw-bold">
+                      Register
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -120,12 +124,13 @@
             <h2 class="title text-white">
               Enabling emerging adults to adapt and succeed.
             </h2>
-            <button
-              class="mb-3 mb-md-0 btn btn-primary bg-white text-primary btn-lg rounded-0"
+            <a
+              href="get-involved.html"
+              class="btn btn-outline-primary btn-lg mb-3 mb-md-0"
             >
               GET INVOLVED
-            </button>
-            <button class="btn btn-primary ms-md-4 btn-lg rounded-0">
+            </a>
+            <button class="btn-donate btn btn-primary btn-lg ms-md-4">
               DONATE
             </button>
           </div>
@@ -133,7 +138,7 @@
       </header>
 
       <!-- MAIN SECTION -->
-      <main class="main">
+      <main id="main">
         <!-- ABOUT SECTION -->
         <section class="about">
           <div class="container-fluid">
@@ -155,7 +160,7 @@
                     Velit malesuada viverra amet duis nunc eget turpis.
                   </p>
                   <a
-                    href="#!"
+                    href="get-involved.html"
                     class="btn-involved btn btn-primary btn-lg rounded-0"
                   >
                     GET INVOLVED
@@ -192,7 +197,7 @@
                     <div class="row gy-3">
                       <div class="col-md-4">
                         <img
-                          src="assets/img/our-program.png"
+                          src="assets/img/volunteer/our-program.png"
                           class="img-fluid"
                           alt="Programs"
                         />
@@ -208,10 +213,10 @@
                             urna quis.
                           </p>
                           <a
-                            href="#!"
+                            href="program-detail.html"
                             class="btn btn-primary btn-lg-sm rounded-0"
                           >
-                            SMALL BUTTON
+                            LEARN MORE
                           </a>
                         </div>
                       </div>
@@ -223,7 +228,7 @@
                     <div class="row gy-3">
                       <div class="col-md-4">
                         <img
-                          src="assets/img/our-program.png"
+                          src="assets/img/volunteer/our-program.png"
                           class="img-fluid"
                           alt="Programs"
                         />
@@ -239,10 +244,10 @@
                             urna quis.
                           </p>
                           <a
-                            href="#!"
+                            href="program-detail.html"
                             class="btn btn-primary btn-lg-sm rounded-0"
                           >
-                            SMALL BUTTON
+                            LEARN MORE
                           </a>
                         </div>
                       </div>
@@ -254,7 +259,7 @@
                     <div class="row gy-3">
                       <div class="col-md-4">
                         <img
-                          src="assets/img/our-program.png"
+                          src="assets/img/volunteer/our-program.png"
                           class="img-fluid"
                           alt="Programs"
                         />
@@ -270,10 +275,10 @@
                             urna quis.
                           </p>
                           <a
-                            href="#!"
+                            href="program-detail.html"
                             class="btn btn-primary btn-lg-sm rounded-0"
                           >
-                            SMALL BUTTON
+                            LEARN MORE
                           </a>
                         </div>
                       </div>
@@ -285,7 +290,7 @@
                     <div class="row gy-3">
                       <div class="col-md-4">
                         <img
-                          src="assets/img/our-program.png"
+                          src="assets/img/volunteer/our-program.png"
                           class="img-fluid"
                           alt="Programs"
                         />
@@ -301,10 +306,10 @@
                             urna quis.
                           </p>
                           <a
-                            href="#!"
+                            href="program-detail.html"
                             class="btn btn-primary btn-lg-sm rounded-0"
                           >
-                            SMALL BUTTON
+                            LEARN MORE
                           </a>
                         </div>
                       </div>
@@ -324,7 +329,7 @@
                 <div class="img my-4 my-lg-0 me-lg-3">
                   <img
                     class="img-fluid"
-                    src="assets/img/our-mission.png"
+                    src="assets/img/mission/mission1.png"
                     alt="mission"
                   />
                 </div>
@@ -332,7 +337,10 @@
               <div class="col-12 col-lg-6">
                 <div class="content">
                   <h2 class="title my-4">We exist for your success.</h2>
-                  <a href="#!" class="btn btn-primary btn-lg rounded-0">
+                  <a
+                    href="our-mission.html"
+                    class="btn btn-primary btn-lg rounded-0"
+                  >
                     OUR MISSION
                   </a>
                 </div>
@@ -357,9 +365,11 @@
                   class="form-control rounded-0"
                   id="InputName"
                   placeholder="Jane Pollock"
-                  value="Jane Pollock"
                 />
-                <label for="InputName">Name</label>
+                <label for="InputName">
+                  Name
+                  <span class="text-danger">*</span>
+                </label>
               </div>
               <div class="form-floating">
                 <input
@@ -367,9 +377,11 @@
                   class="form-control rounded-0"
                   id="InputEmail"
                   placeholder="jane@example.com"
-                  value="jane@example.com"
                 />
-                <label for="InputEmail">Email Address</label>
+                <label for="InputEmail">
+                  Email Address
+                  <span class="text-danger">*</span>
+                </label>
               </div>
               <button
                 type="submit"
@@ -396,7 +408,7 @@
                     sollicitudin.
                   </p>
                   <div class="text-center text-lg-start">
-                    <a href="#!" class="btn btn-primary rounded-0">
+                    <a href="our-team.html" class="btn btn-primary rounded-0">
                       ALL TEAM MEMBERS
                     </a>
                   </div>
@@ -412,7 +424,7 @@
                         >
                           <div class="col-md-3">
                             <img
-                              src="assets/img/members-team.png"
+                              src="assets/img/team/members-team.png"
                               class="member-img img-fluid rounded-circle"
                               alt="team"
                             />
@@ -433,51 +445,7 @@
                         >
                           <div class="col-md-3">
                             <img
-                              src="assets/img/members-team.png"
-                              class="member-img img-fluid rounded-circle"
-                              alt="team"
-                            />
-                          </div>
-                          <div class="col-md-9">
-                            <div class="card-body">
-                              <h5 class="card-title">Dianne Russell</h5>
-                              <p class="card-text">MEGAN EASTMAN</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="card mb-3 border-0">
-                        <div
-                          class="row g-0 align-items-center text-center text-md-start"
-                        >
-                          <div class="col-md-3">
-                            <img
-                              src="assets/img/members-team.png"
-                              class="member-img img-fluid rounded-circle"
-                              alt="team"
-                            />
-                          </div>
-                          <div class="col-md-9">
-                            <div class="card-body">
-                              <h5 class="card-title">Dianne Russell</h5>
-                              <p class="card-text">MEGAN EASTMAN</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="card mb-3 border-0">
-                        <div
-                          class="row g-0 align-items-center text-center text-md-start"
-                        >
-                          <div class="col-md-3">
-                            <img
-                              src="assets/img/members-team.png"
+                              src="assets/img/team/members-team.png"
                               class="member-img img-fluid rounded-circle"
                               alt="team"
                             />
@@ -500,7 +468,7 @@
                         >
                           <div class="col-md-3">
                             <img
-                              src="assets/img/members-team.png"
+                              src="assets/img/team/members-team.png"
                               class="member-img img-fluid rounded-circle"
                               alt="team"
                             />
@@ -521,7 +489,51 @@
                         >
                           <div class="col-md-3">
                             <img
-                              src="assets/img/members-team.png"
+                              src="assets/img/team/members-team.png"
+                              class="member-img img-fluid rounded-circle"
+                              alt="team"
+                            />
+                          </div>
+                          <div class="col-md-9">
+                            <div class="card-body">
+                              <h5 class="card-title">Dianne Russell</h5>
+                              <p class="card-text">MEGAN EASTMAN</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card mb-3 border-0">
+                        <div
+                          class="row g-0 align-items-center text-center text-md-start"
+                        >
+                          <div class="col-md-3">
+                            <img
+                              src="assets/img/team/members-team.png"
+                              class="member-img img-fluid rounded-circle"
+                              alt="team"
+                            />
+                          </div>
+                          <div class="col-md-9">
+                            <div class="card-body">
+                              <h5 class="card-title">Dianne Russell</h5>
+                              <p class="card-text">MEGAN EASTMAN</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card mb-3 border-0">
+                        <div
+                          class="row g-0 align-items-center text-center text-md-start"
+                        >
+                          <div class="col-md-3">
+                            <img
+                              src="assets/img/team/members-team.png"
                               class="member-img img-fluid rounded-circle"
                               alt="team"
                             />
@@ -576,7 +588,7 @@
                         sagittis at. Netus sagittis eleifend aliquet urna quis.
                       </p>
                       <a
-                        href="#!"
+                        href="blog-detail.html"
                         class="btn btn-primary rounded-0 d-block d-lg-inline-block d-block d-lg-inline-block"
                       >
                         READ NOW
@@ -601,7 +613,7 @@
                         sagittis at. Netus sagittis eleifend aliquet urna quis.
                       </p>
                       <a
-                        href="#!"
+                        href="blog-detail.html"
                         class="btn btn-primary rounded-0 d-block d-lg-inline-block"
                       >
                         READ NOW
@@ -626,7 +638,7 @@
                         sagittis at. Netus sagittis eleifend aliquet urna quis.
                       </p>
                       <a
-                        href="#!"
+                        href="blog-detail.html"
                         class="btn btn-primary rounded-0 d-block d-lg-inline-block"
                       >
                         READ NOW
@@ -651,7 +663,7 @@
                         sagittis at. Netus sagittis eleifend aliquet urna quis.
                       </p>
                       <a
-                        href="#!"
+                        href="blog-detail.html"
                         class="btn btn-primary rounded-0 d-block d-lg-inline-block"
                       >
                         READ NOW
@@ -664,7 +676,7 @@
 
             <div class="text-center">
               <a
-                href="#!"
+                href="blog.html"
                 class="btn-all-blog btn btn-primary btn-lg rounded-0"
               >
                 ALL BLOG POSTS
@@ -673,46 +685,75 @@
           </div>
         </section>
 
-        <!-- CAROUSEL SECTION -->
-        <section class="carousel-list">
-          <div class="container-fluid">
-            <div class="carousel-inner d-flex">
+        <!-- SLIDER SECTION -->
+        <section class="slider-list">
+          <div class="slider-inner d-flex">
+            <div class="slider-item">
               <img
                 class="h-100"
                 src="assets/img/carousel/carousel1.png"
                 alt=""
               />
+            </div>
+            <div class="slider-item">
               <img
                 class="h-100"
                 src="assets/img/carousel/carousel2.png"
                 alt=""
               />
+            </div>
+            <div class="slider-item">
               <img
                 class="h-100"
                 src="assets/img/carousel/carousel3.png"
                 alt=""
               />
             </div>
-            <div class="text-center">
-              <button
-                style="margin-right: 15px"
-                class="btn btn-primary rounded-circle p-3"
-              >
-                <ion-icon class="d-block" name="arrow-back-outline"></ion-icon>
-              </button>
-              <button class="btn btn-primary rounded-circle p-3">
-                <ion-icon
-                  class="d-block"
-                  name="arrow-forward-outline"
-                ></ion-icon>
-              </button>
+            <div class="slider-item">
+              <img
+                class="h-100"
+                src="assets/img/carousel/carousel3.png"
+                alt=""
+              />
             </div>
+            <div class="slider-item">
+              <img
+                class="h-100"
+                src="assets/img/carousel/carousel3.png"
+                alt=""
+              />
+            </div>
+            <div class="slider-item">
+              <img
+                class="h-100"
+                src="assets/img/carousel/carousel3.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="slider-control text-center">
+            <button
+              class="btn-prev-slider btn btn-primary rounded-circle p-2 me-3"
+            >
+              <box-icon
+                color="#ffffff"
+                class="d-block"
+                name="left-arrow-alt"
+              ></box-icon>
+            </button>
+            <button class="btn-next-slider btn btn-primary rounded-circle p-2">
+              <box-icon
+                color="#ffffff"
+                class="d-block"
+                name="right-arrow-alt"
+              ></box-icon>
+            </button>
           </div>
         </section>
       </main>
 
       <!-- FOOTER SECTION -->
-      <footer>
+      <footer id="footer">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 col-lg-3 mb-4 mb-lg-0">
@@ -724,7 +765,7 @@
                   src="assets/img/logo/logo-orange.png"
                   alt="Limitless"
                 />
-                <span class="text-primary brand-text">Limitless</span>
+                <span class="brand-text">Limitless</span>
               </div>
               <div class="icons">
                 <ul class="list-unstyled d-flex justify-content-center">
@@ -885,8 +926,115 @@
           </div>
         </div>
       </footer>
+
+      <div class="popup d-none" id="popupDonationForm">
+        <div class="popup-dialog">
+          <div class="popup-content">
+            <div class="popup-header">
+              <h3 class="popup-title">Donation Form</h3>
+              <div class="popup-close">
+                <box-icon class="icon-close" size="md" name="x"></box-icon>
+              </div>
+            </div>
+            <div class="popup-body">
+              <form class="row g-3" action="" method="post">
+                <div class="col-md-12">
+                  <label for="fullName" class="form-label">
+                    Full Name
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    id="fullName"
+                    type="text"
+                    class="form-control"
+                    placeholder="ex: Warren Buffett"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label for="email" class="form-label">
+                    Email
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="ex: myemail@gmail.com"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="phoneNumber" class="form-label">
+                    Phone Number
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    id="phoneNumber"
+                    type="tel"
+                    class="form-control"
+                    placeholder="ex: 0866555999"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="phoneNumber" class="form-label">
+                    Donation Amount
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group">
+                    <input
+                      id="phoneNumber"
+                      type="tel"
+                      class="form-control"
+                      placeholder="ex: 1.2"
+                    />
+                    <span class="input-group-text">USD</span>
+                  </div>
+                </div>
+                <div class="payment-methods col-md-12">
+                  <p>
+                    Payment Methods
+                    <span class="text-danger">*</span>
+                  </p>
+                  <div class="form-check">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      id="debitOrCreditCard"
+                      name="paymentMethod"
+                      value="1"
+                    />
+                    <label class="form-check-label" for="debitOrCreditCard">
+                      Debit or Credit Card
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      id="paypal"
+                      name="paymentMethod"
+                      value="2"
+                    />
+                    <label class="form-check-label" for="paypal">
+                      Paypal
+                    </label>
+                  </div>
+                </div>
+                <div class="payment-toggle-content row g-3"></div>
+                <button
+                  type="submit"
+                  class="mx-auto col-md-6 mt-3 btn btn-primary"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="assets/vendors/bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/components/popup.js"></script>
+    <script src="assets/js/home.js"></script>
   </body>
 </html>

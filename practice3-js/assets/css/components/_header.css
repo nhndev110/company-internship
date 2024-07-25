@@ -1,0 +1,42 @@
+/* =========== HEADER =========== */
+#header .navbar {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#header .navbar .navbar-brand {
+  font-size: 26px;
+}
+
+#header .navbar .navbar-brand img {
+  height: 35px;
+}
+
+#header .navbar .navbar-collapse button {
+  font-weight: 700;
+  line-height: 28px;
+}
+
+#header .navbar .navbar-nav a.nav-link {
+  position: relative;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+#header .navbar .navbar-nav li a.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  width: 0;
+  height: 3px;
+  border-radius: 12px;
+  background-color: var(--bs-primary);
+  transition: 0.3s ease;
+}
+
+#header .navbar .navbar-nav li:hover a.nav-link::before {
+  width: 100%;
+}

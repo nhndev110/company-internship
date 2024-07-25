@@ -1,0 +1,57 @@
+/* =========== FOOTER SECTION =========== */
+footer#footer {
+  margin-top: 64px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 0 40px;
+}
+
+footer#footer .brand {
+  margin-bottom: 17px;
+}
+
+footer#footer .brand-logo {
+  height: 54px;
+}
+
+footer#footer .brand-text {
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+footer#footer .icons ul li + li {
+  margin-left: 16px;
+}
+
+footer#footer .icons .icon {
+  font-size: 24px;
+}
+
+footer#footer .links ul li + li {
+  margin-top: 19px;
+}
+
+footer#footer .form-title,
+footer#footer .form-stay-up .form-floating {
+  margin-bottom: 17px;
+}
+
+footer#footer .form-stay-up .form-floating .form-control {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+footer#footer .form-stay-up .form-floating label {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+footer#footer p.copyright {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 56px;
+}

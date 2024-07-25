@@ -74,15 +74,16 @@
   }
 
   /* =========== CAROUSEL SECTION =========== */
-  section.carousel-list {
-    padding: 40px 0;
+  section.slider-list {
+    height: 450px;
+    margin-top: 32px;
   }
 
-  section.carousel-list .carousel-inner {
-    height: 225px;
+  section.slider-list .slider-inner {
+    height: 325px;
   }
 
-  section.carousel-list .carousel-inner img + img {
+  section.slider-list .slider-inner .slider-item + .slider-item {
     margin-left: 16px;
   }
 }
@@ -122,16 +123,17 @@
     margin-bottom: 16px;
   }
 
-  /* =========== CAROUSEL SECTION =========== */
-  section.carousel-list {
-    padding: 40px 0;
+  /* =========== SLIDER SECTION =========== */
+  section.slider-list {
+    height: 230px;
+    margin-top: 32px;
   }
 
-  section.carousel-list .carousel-inner {
-    height: 125px;
+  section.slider-list .slider-inner {
+    height: 150px;
   }
 
-  section.carousel-list .carousel-inner img + img {
-    margin-left: 16px;
+  section.slider-list .slider-inner .slider-item + .slider-item {
+    margin-left: 12px;
   }
 }
