@@ -1,0 +1,38 @@
+h1,
+.h1 {
+  font-size: 3.438rem;
+  font-weight: 700;
+  line-height: 3.5rem;
+}
+
+h2,
+.h2 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+
+h3,
+.h3 {
+  font-size: 2.188rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+.display-small {
+  font-size: 5.375rem;
+  font-weight: 700;
+  line-height: 5.5rem;
+  letter-spacing: 0.01em;
+}
+
+p {
+  --bs-body-color: #414141;
+}
