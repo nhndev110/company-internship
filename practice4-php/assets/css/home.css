@@ -1,0 +1,302 @@
+@import url("components/common.css");
+@import url("components/footer.css");
+
+/* =========== HEADER =========== */
+#header {
+  position: relative;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#header .navbar .navbar-brand {
+  font-size: 26px;
+}
+
+#header .navbar .navbar-brand img {
+  height: 35px;
+}
+
+#header .navbar .navbar-collapse button {
+  font-weight: 700;
+  line-height: 28px;
+}
+
+#header .navbar .navbar-nav a.nav-link {
+  position: relative;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+#header .navbar .navbar-nav li a.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  width: 0;
+  height: 3px;
+  border-radius: 12px;
+  background-color: var(--bs-primary);
+  transition: 0.3s ease;
+}
+
+#header .navbar .navbar-nav li:hover a.nav-link::before {
+  width: 100%;
+}
+
+#header .banner {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+}
+
+#header .banner .btn {
+  font-weight: 700;
+  line-height: 28px;
+}
+
+/* =========== MAIN =========== */
+
+/* =========== ABOUT SECTION =========== */
+.about {
+  position: relative;
+  padding: 80px 0;
+}
+
+.about .content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 55%;
+  background-color: var(--bs-white);
+  padding: 40px;
+}
+
+.about .content .btn-involved {
+  font-weight: 700;
+}
+
+/* =========== OUR PROGRAMS SECTION =========== */
+.our-programs {
+  padding: 80px 0;
+}
+
+.our-programs .header {
+  padding: 0 40px;
+  text-align: center;
+}
+
+.our-programs .program-list {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 68px;
+  margin-top: 80px;
+}
+
+.our-programs .program-list .row:first-child {
+  margin-bottom: 16px;
+}
+
+.our-programs .card {
+  --bs-card-spacer-y: 0;
+}
+
+.our-programs .card .card-title {
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.our-programs .card .card-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* =========== OUR MISSION SECTION =========== */
+.our-mission {
+  padding: 60px 0;
+}
+
+.our-mission .content {
+  width: 620px;
+  margin: auto 0;
+}
+
+/* =========== SUBSCRIBE SECTION =========== */
+.subscribe {
+  padding: 80px 0;
+}
+
+.subscribe .title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.subscribe .form-subscribe .form-floating {
+  width: 400px;
+  margin-right: 16px;
+}
+
+.subscribe .form-subscribe .form-floating label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.subscribe .form-subscribe .form-floating input {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.subscribe .form-subscribe .btn-subcribe {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+/* =========== OUR TEAM SECTION =========== */
+.our-team {
+  padding: 80px;
+}
+
+.our-team .title {
+  font-size: 55px;
+  line-height: 56px;
+}
+
+.our-team .team-members {
+  margin-left: 45px;
+}
+
+.our-team .team-members > .row + .row {
+  margin-top: 24px;
+}
+
+.our-team .team-members .card .card-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.our-team .team-members .card .card-text {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.our-team .team-members .member-img {
+  width: 104px;
+}
+
+/* =========== BLOG SECTION =========== */
+section.blog {
+  padding: 80px 40px;
+}
+
+section.blog .blog-list {
+  padding: 0 42px;
+  margin-top: 80px;
+}
+
+section.blog .blog-list .topic {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+section.blog .blog-list .card-title {
+  font-size: 22.5px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+section.blog .blog-list .card-text {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+section.blog .blog-list .btn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+section.blog .btn-all-blog {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-top: 80px;
+}
+
+/* =========== SLIDER SECTION =========== */
+section.slider-list {
+  position: relative;
+  height: 650px;
+  overflow-x: hidden;
+  margin-bottom: 32px;
+}
+
+section.slider-list .slider-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 525px;
+  transition: 0.3s ease-in-out;
+}
+
+section.slider-list .slider-inner .slider-item + .slider-item {
+  margin-left: 40px;
+}
+
+section.slider-list .slider-control {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ======= ANIMATION ======= */
+@keyframes slideInRight {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

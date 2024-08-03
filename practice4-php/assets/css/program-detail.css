@@ -1,0 +1,47 @@
+@import url("components/common.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+/* =========== MAIN =========== */
+#main {
+  margin-top: 120px;
+}
+
+/* =========== PROGRAM HEADER =========== */
+#program-header {
+  position: relative;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: var(--bs-white);
+}
+
+#program-header .topic {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30.6px;
+}
+
+#program-header .title {
+  font-size: 55px;
+  font-weight: 600;
+  line-height: 61.6px;
+}
+
+/* =========== PROGRAM MAIN =========== */
+#program-main {
+  margin-top: 160px;
+}
+
+#program-main .cta-container {
+  padding: 30px 24px;
+  background-color: rgba(13, 110, 253, 0.2);
+}
+
+#program-main .cta-container .title {
+  font-size: 35px;
+  font-weight: 600;
+}

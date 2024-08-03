@@ -1,0 +1,47 @@
+/* =========== POPUP =========== */
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup .popup-dialog {
+  background-color: var(--bs-white);
+}
+
+.popup .popup-dialog .popup-content {
+  display: inline-block;
+  width: 850px;
+  height: 550px;
+}
+
+.popup .popup-dialog .popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12%;
+  border-bottom: 1px solid #ccc;
+  padding: 0 40px;
+}
+
+.popup .popup-dialog .popup-header .popup-title {
+  margin-bottom: 0;
+}
+
+.popup .popup-dialog .popup-header .popup-close .icon-close {
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.popup .popup-dialog .popup-body {
+  padding: 24px 40px;
+  overflow-y: scroll;
+  height: 88%;
+}

@@ -1,3 +1,3 @@
 <?php
 
-echo "init project 1";
+require_once "./bootstrap/app.php";

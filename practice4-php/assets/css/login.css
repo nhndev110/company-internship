@@ -1,0 +1,25 @@
+@import url("components/common.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+/* =========== MAIN =========== */
+#main {
+  margin-top: 120px;
+}
+
+.login-header .login-title {
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.login-header .login-desc {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-bottom: 40px;
+}
+
+.btn-submit {
+  margin: 40px 0;
+}

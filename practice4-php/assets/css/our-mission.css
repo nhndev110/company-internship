@@ -1,0 +1,32 @@
+@import url("components/common.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+/* =========== MAIN =========== */
+#main {
+  margin-top: 120px;
+}
+
+.mission {
+  padding: 60px 0;
+}
+
+.mission .mission-content .mission-topic {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.mission .mission-title {
+  font-size: 86px;
+  font-weight: 700;
+  line-height: 88px;
+  margin-top: 40px;
+}
+
+.mission .mission-content .mission-desc {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-top: 40px;
+}

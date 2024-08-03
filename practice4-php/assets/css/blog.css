@@ -1,0 +1,45 @@
+@import url("components/common.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+/* =========== MAIN =========== */
+main#main {
+  margin-top: 120px;
+}
+
+/* =========== FEATURED POST =========== */
+#featured-post .topic {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+#featured-post h1.title {
+  margin-top: 38px;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+#featured-post p.desc {
+  margin-top: 32px;
+  font-size: 17px;
+  line-height: 27px;
+  font-weight: 400;
+}
+
+#featured-post .btn-read {
+  margin-top: 32px;
+}
+
+/* =========== ALL POST =========== */
+#all-post {
+  margin-top: 72px;
+}
+
+#all-post h2 {
+  margin-bottom: 56px;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 56px;
+}

@@ -1,0 +1,36 @@
+@import url("components/common.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+/* =========== MAIN =========== */
+#main {
+  margin-top: 120px;
+}
+
+/* =========== BLOG HEADER =========== */
+#blog-header .blog-topic {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+#blog-header .blog-title {
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 56px;
+  margin-top: 40px;
+}
+
+#blog-header .blog-author {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+#blog-main {
+  margin-top: 138px;
+}
+
+#blog-main .blog-main-content {
+  width: 728px;
+  margin: 0 auto;
+}

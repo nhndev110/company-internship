@@ -1,0 +1,139 @@
+/* =========== TABLET & MOBILE =========== */
+@media (max-width: 992px) {
+  /* =========== COMMON =========== */
+  h2.title {
+    font-weight: 700;
+    text-align: center;
+  }
+
+  p.subtitle {
+    text-align: center;
+  }
+
+  p.subtitle.center {
+    width: auto;
+  }
+
+  /* =========== OUR PROGRAMS SECTION =========== */
+  .our-programs {
+    padding: 20px 0;
+  }
+
+  .our-mission .content {
+    width: auto;
+    text-align: center;
+  }
+
+  .our-programs .program-list {
+    margin-top: 80px;
+    padding: 0;
+  }
+
+  /* =========== OUR TEAM SECTION =========== */
+  .our-team {
+    padding: 40px 0;
+  }
+
+  .our-team .team-members {
+    margin-left: 0;
+  }
+
+  /* =========== BLOG SECTION =========== */
+  section.blog {
+    padding: 20px 0;
+  }
+
+  section.blog .blog-list {
+    padding: 0;
+    margin-top: 40px;
+  }
+
+  section.blog .btn-all-blog {
+    margin-top: 40px;
+  }
+}
+
+/* =========== TABLET =========== */
+@media (min-width: 577px) and (max-width: 992px) {
+  /* =========== COMMON =========== */
+  h2.title {
+    font-size: 86px !important;
+    line-height: 88px !important;
+  }
+
+  /* =========== OUR PROGRAMS SECTION =========== */
+  .our-programs {
+    margin-top: 0;
+  }
+
+  /* =========== SUBSCRIBE SECTION =========== */
+  .subscribe .form-subscribe .form-floating {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  /* =========== CAROUSEL SECTION =========== */
+  section.slider-list {
+    height: 450px;
+    margin-top: 32px;
+  }
+
+  section.slider-list .slider-inner {
+    height: 325px;
+  }
+
+  section.slider-list .slider-inner .slider-item + .slider-item {
+    margin-left: 16px;
+  }
+}
+
+/* =========== MOBILE =========== */
+@media (max-width: 576px) {
+  /* =========== COMMON =========== */
+  h2.title {
+    font-size: 44px;
+    line-height: 46px;
+  }
+
+  /* =========== ABOUT SECTION =========== */
+  .about .content {
+    text-align: center;
+    width: 90%;
+    height: 512px;
+    padding: 20px;
+    top: 125%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* =========== OUR PROGRAMS SECTION =========== */
+  .our-programs {
+    margin-top: 450px;
+  }
+
+  /* =========== SUBSCRIBE SECTION =========== */
+  .subscribe {
+    padding: 40px 0;
+  }
+
+  .subscribe .form-subscribe .form-floating {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  /* =========== SLIDER SECTION =========== */
+  section.slider-list {
+    height: 230px;
+    margin-top: 32px;
+  }
+
+  section.slider-list .slider-inner {
+    height: 150px;
+  }
+
+  section.slider-list .slider-inner .slider-item + .slider-item {
+    margin-left: 12px;
+  }
+}
