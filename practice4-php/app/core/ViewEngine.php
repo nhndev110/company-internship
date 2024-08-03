@@ -10,15 +10,15 @@ class ViewEngine extends Smarty
   {
     parent::__construct();
 
-    $this->setTemplateDir(APP_PATH . '/resources/views');
-    $this->setCompileDir(APP_PATH . '/storage/templates_c');
-    $this->setConfigDir(APP_PATH . '/storage/configs');
-    $this->setCacheDir(APP_PATH . '/storage/cache');
+    $this->setTemplateDir(APP_PATH . '\\resources\\views\\');
+    $this->setConfigDir(APP_PATH . '\\configs\\');
+    $this->setCompileDir(APP_PATH . '\\storage\\templates_c\\');
+    $this->setCacheDir(APP_PATH . '\\storage\\cache\\');
 
     $this->setEscapeHtml(true);
 
     $this->caching = Smarty::CACHING_OFF;
-    $this->assign('app_name', 'Nonprofit Organization');
+    $this->assign('app_name', 'Limitless');
   }
 
   public function render(string $template, array $data = [])
