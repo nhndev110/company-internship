@@ -1,0 +1,22 @@
+@import url("components/common.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+
+/* =========== MAIN =========== */
+#main {
+  margin-top: 120px;
+}
+
+/* =========== VOLUNTEER FORM =========== */
+#volunteer .volunteer-form .desc {
+  margin-top: 28px;
+}
+
+#volunteer .volunteer-form form {
+  margin-top: 26px;
+}
+
+/* =========== PROGRAMS =========== */
+#programs {
+  margin-top: 178px;
+}
