@@ -2,7 +2,8 @@
   <nav class="navbar navbar-expand-lg fixed-top bg-white">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="/">
-        <img class="d-inline-block" src="/assets/img/logo/logo-orange.png"
+        <img class="d-inline-block"
+          src="{assets path='/assets/img/logo/logo-orange.png'}"
           alt="Limitless" />
         <span>Limitless</span>
       </a>
@@ -24,23 +25,23 @@
               <a class="nav-link" href="/">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.php">ABOUT US</a>
+              <a class="nav-link" href="/about">ABOUT US</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="get-involved.php">GET INVOLVED</a>
+              <a class="nav-link" href="/involved">GET INVOLVED</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="/blog">BLOG</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-us.php"> CONTACT US </a>
+              <a class="nav-link" href="/contact-us"> CONTACT US </a>
             </li>
           </ul>
           <div class="button-group">
-            <a href="login.php" class="btn btn-primary fw-bold">
+            <a href="/login" class="btn btn-primary fw-bold">
               Login
             </a>
-            <a href="register.php" class="btn btn-outline-primary fw-bold">
+            <a href="/register" class="btn btn-outline-primary fw-bold">
               Register
             </a>
           </div>

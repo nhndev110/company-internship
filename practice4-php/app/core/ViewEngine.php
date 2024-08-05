@@ -15,6 +15,8 @@ class ViewEngine extends Smarty
     $this->setCompileDir(APP_PATH . '\\storage\\templates_c\\');
     $this->setCacheDir(APP_PATH . '\\storage\\cache\\');
 
+    $this->registerPlugin('function', 'assets', 'smarty_assets');
+
     $this->setEscapeHtml(true);
 
     $this->caching = Smarty::CACHING_OFF;
