@@ -7,8 +7,12 @@ require_once APP_PATH . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(APP_PATH);
 $dotenv->load();
 
+$config_app = require_once APP_PATH . '/config/app.php';
+$config_db = require_once APP_PATH . '/config/database.php';
+require_once APP_PATH . '/app/helpers/helper.fnc.php';
+
 spl_autoload_register(function ($class) {
-  require_once($class . '.php');
+  require_once $class . '.php';
 });
 
 $router = new Bramus\Router\Router();

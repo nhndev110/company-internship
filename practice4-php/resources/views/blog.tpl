@@ -3,11 +3,11 @@
 {block name="title"}Blog{/block}
 
 {block name="css"}
-  <link rel="stylesheet" href="/assets/css/blog.css" />
+  <link rel="stylesheet" href="{assets path='assets/css/blog.css'}" />
 {/block}
 
 {block name="js"}
-  <script src="/assets/js/blog.js"></script>
+  <script src="{assets path='assets/js/blog.js'}"></script>
 {/block}
 
 {block name="main"}
@@ -15,7 +15,8 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12 col-md-6">
-          <img class="w-100" src="/assets/img/blog/blog-banner.jpg"
+          <img class="w-100"
+            src="{assets path='/assets/img/blog/blog-banner.jpg'}"
             alt="How COVID-19 changed our outlook on helping from a distance."
             title="How COVID-19 changed our outlook on helping from a distance." />
         </div>
@@ -49,7 +50,8 @@
           {foreach $articles as $article}
             <div class="col">
               <div class="card rounded-0 border-0">
-                <img src="{$article->getThumbnail()}" class="card-img-top rounded-0"
+                <img src="{assets path=$article->getThumbnail()}"
+                  class="card-img-top rounded-0"
                   title="{$article->getTitle()|capitalize}"
                   alt="{$article->getTitle()|capitalize}" />
                 <div class="card-body px-0">
