@@ -16,14 +16,15 @@
       <div class="row align-items-center">
         <div class="col-12 col-lg-6">
           <span
-            class="blog-topic text-primary">{$article->getTopic()|upper}</span>
+            class="blog-topic text-primary">{$article->getCategoryName()|upper}</span>
           <h1 class="blog-title">
             {$article->getTitle()|capitalize}
           </h1>
-          <p class="blog-author">By Titus Grady</p>
+          <p class="blog-author">By {$article->getAuthorName()|capitalize}</p>
         </div>
         <div class="col-12 col-lg-6">
-          <img class="w-100" src="{assets path='assets/img/blog/blog-banner.jpg'}"
+          <img class="w-100"
+            src="{assets path='assets/img/blog/articles'}/{$article->getThumbnail()}"
             alt="{$article->getTitle()|capitalize}"
             title="{$article->getTitle()|capitalize}" />
         </div>
@@ -33,7 +34,7 @@
 
   <section id="blog-main">
     <div class="blog-main-content">
-      {$article->getContent()}
+      {$article->getContent()|unescape:'html' nofilter}
     </div>
   </section>
 

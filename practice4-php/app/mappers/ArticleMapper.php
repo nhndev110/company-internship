@@ -14,10 +14,12 @@ class ArticleMapper implements IRowMapper
       $objs[] = new Article(
         $row['id'],
         $row['title'],
+        $row['description'],
         $row['content'],
-        $row['thumbnail'],
         $row['slug'],
-        $row['topic'],
+        $row['thumbnail'],
+        $row['status'],
+        $row['category_id'],
         $row['author_id']
       );
     }
