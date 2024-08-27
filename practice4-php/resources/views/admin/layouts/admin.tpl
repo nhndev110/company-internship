@@ -54,7 +54,7 @@
   </div>
 
   <script>
-    const APP_URL = "http://localhost"
+    const APP_URL = "{$smarty.server.REQUEST_SCHEME}://{$smarty.server.SERVER_NAME}:{$smarty.server.SERVER_PORT}";
   </script>
   <!-- jQuery -->
   <script src="{assets path='assets/admin/plugins/jquery/jquery.min.js'}">
