@@ -12,6 +12,7 @@ class DBHelper
   private string $db_database;
   private string $db_username;
   private string $db_password;
+  private array $db_option;
 
   private $conn;
   private static DBHelper $instance;
@@ -25,7 +26,14 @@ class DBHelper
     $this->db_username = $_ENV['DB_USERNAME'];
     $this->db_password = $_ENV['DB_PASSWORD'];
 
-    $this->conn = new PDO("{$this->db_connection}:host={$this->db_host};dbname={$this->db_database}", $this->db_username, $this->db_password);
+    $this->db_option = [
+      PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+      PDO::ATTR_EMULATE_PREPARES   => false,
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
+    ];
+
+    $this->conn = new PDO("{$this->db_connection}:host={$this->db_host};dbname={$this->db_database};", $this->db_username, $this->db_password, $this->db_option);
   }
 
   public static function getInstance(): DBHelper

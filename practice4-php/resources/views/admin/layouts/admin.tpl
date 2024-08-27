@@ -12,10 +12,15 @@
   <!-- Font Awesome -->
   <link rel="stylesheet"
     href="{assets path='assets/admin/plugins/fontawesome-free/css/all.min.css'}">
+  {block name="css"}{/block}
   <!-- Theme style -->
   <link rel="stylesheet"
     href="{assets path='assets/admin/css/adminlte.min.css'}">
-  {block name="css"}{/block}
+  <style>
+    .dropdown-toggle::after {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -39,24 +44,20 @@
       {block name="main"}{/block}
     </div>
 
-    <!-- Footer -->
-    {include file="admin/components/footer.tpl"}
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
     </aside>
+
+    <!-- Footer -->
+    {include file="admin/components/footer.tpl"}
   </div>
 
+  <script>
+    const APP_URL = "http://localhost"
+  </script>
   <!-- jQuery -->
   <script src="{assets path='assets/admin/plugins/jquery/jquery.min.js'}">
-  </script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="{assets path='assets/admin/plugins/jquery-ui/jquery-ui.min.js'}">
-  </script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
   </script>
   <!-- Bootstrap 4 -->
   <script

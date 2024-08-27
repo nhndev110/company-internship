@@ -6,28 +6,34 @@ class Article
 {
   private int $id;
   private string $title;
+  private string $description;
   private string $content;
-  private string $thumbnail;
   private string $slug;
-  private string $topic;
-  private int $author_id;
+  private string $thumbnail;
+  private int $status;
+  private int $categoryId;
+  private int $authorId;
 
   public function __construct(
     int $id,
     string $title,
+    string $description,
     string $content,
-    string $thumbnail,
     string $slug,
-    string $topic,
-    int $author_id
+    string $thumbnail,
+    int $status,
+    int $categoryId,
+    int $authorId
   ) {
     $this->id = $id;
     $this->title = $title;
+    $this->description = $description;
     $this->content = $content;
     $this->thumbnail = $thumbnail;
     $this->slug = $slug;
-    $this->topic = $topic;
-    $this->author_id = $author_id;
+    $this->status = $status;
+    $this->categoryId = $categoryId;
+    $this->authorId = $authorId;
   }
 
   public function getId()
@@ -83,41 +89,21 @@ class Article
   }
 
   /**
-   * Get the value of topic
+   * Get the value of authorId
    */
-  public function getTopic()
+  public function getAuthorId()
   {
-    return $this->topic;
+    return $this->authorId;
   }
 
   /**
-   * Set the value of topic
+   * Set the value of authorId
    *
    * @return  self
    */
-  public function setTopic($topic)
+  public function setAuthorId($authorId)
   {
-    $this->topic = $topic;
-
-    return $this;
-  }
-
-  /**
-   * Get the value of author_id
-   */
-  public function getAuthor_id()
-  {
-    return $this->author_id;
-  }
-
-  /**
-   * Set the value of author_id
-   *
-   * @return  self
-   */
-  public function setAuthor_id($author_id)
-  {
-    $this->author_id = $author_id;
+    $this->authorId = $authorId;
 
     return $this;
   }
@@ -158,6 +144,66 @@ class Article
   public function setSlug($slug)
   {
     $this->slug = $slug;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of categoryId
+   */
+  public function getCategoryId()
+  {
+    return $this->categoryId;
+  }
+
+  /**
+   * Set the value of categoryId
+   *
+   * @return  self
+   */
+  public function setCategoryId($categoryId)
+  {
+    $this->categoryId = $categoryId;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of status
+   */
+  public function getStatus()
+  {
+    return $this->status;
+  }
+
+  /**
+   * Set the value of status
+   *
+   * @return  self
+   */
+  public function setStatus($status)
+  {
+    $this->status = $status;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of description
+   */
+  public function getDescription()
+  {
+    return $this->description;
+  }
+
+  /**
+   * Set the value of description
+   *
+   * @return  self
+   */
+  public function setDescription($description)
+  {
+    $this->description = $description;
 
     return $this;
   }
