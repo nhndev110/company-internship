@@ -7,7 +7,7 @@
       </a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="index3.html" class="nav-link">Home</a>
+      <a href="/" class="nav-link">Home</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contact</a>
@@ -50,8 +50,8 @@
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
-              class="img-size-50 mr-3 img-circle">
+            <img src="{assets path='assets/admin/img/user1-128x128.jpg'}"
+              alt="User Avatar" class="img-size-50 mr-3 img-circle">
             <div class="media-body">
               <h3 class="dropdown-item-title">
                 Brad Diesel
@@ -69,8 +69,8 @@
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
-              class="img-size-50 img-circle mr-3">
+            <img src="{assets path='assets/admin/img/user8-128x128.jpg'}"
+              alt="User Avatar" class="img-size-50 img-circle mr-3">
             <div class="media-body">
               <h3 class="dropdown-item-title">
                 John Pierce
@@ -88,8 +88,8 @@
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
-              class="img-size-50 img-circle mr-3">
+            <img src="{assets path='assets/admin/img/user3-128x128.jpg'}"
+              alt="User Avatar" class="img-size-50 img-circle mr-3">
             <div class="media-body">
               <h3 class="dropdown-item-title">
                 Nora Silvester
@@ -131,8 +131,9 @@
           <span class="float-right text-muted text-sm">2 days</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All
-          Notifications</a>
+        <a href="#" class="dropdown-item dropdown-footer">
+          See All Notifications
+        </a>
       </div>
     </li>
     <li class="nav-item">
@@ -140,11 +141,16 @@
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar"
-        data-controlsidebar-slide="true" href="#" role="button">
-        <i class="fas fa-th-large"></i>
-      </a>
+    <li class="nav-item dropdown" style="cursor: pointer;">
+      <div class="user-panel" data-toggle="dropdown">
+        <div class="image">
+          <img src="{assets path='assets/admin/img/user2-160x160.jpg'}"
+            class="img-circle" alt="User Image">
+        </div>
+      </div>
+      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+        <a href="/admin/logout" class="dropdown-item">Logout</a>
+      </div>
     </li>
   </ul>
 </nav>

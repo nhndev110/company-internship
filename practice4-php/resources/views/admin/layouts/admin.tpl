@@ -11,13 +11,16 @@
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet"
-    href="/assets/admin/plugins/fontawesome-free/css/all.min.css">
-  <!-- summernote -->
-  <link rel="stylesheet"
-    href="/assets/admin/plugins/summernote/summernote-bs4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/assets/admin/dist/css/adminlte.min.css">
+    href="{assets path='assets/admin/plugins/fontawesome-free/css/all.min.css'}">
   {block name="css"}{/block}
+  <!-- Theme style -->
+  <link rel="stylesheet"
+    href="{assets path='assets/admin/css/adminlte.min.css'}">
+  <style>
+    .dropdown-toggle::after {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -26,8 +29,8 @@
     <div
       class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake"
-        src="/assets/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo"
-        height="60" width="60">
+        src="{assets path='/assets/admin/img/AdminLTELogo.png'}"
+        alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -41,30 +44,27 @@
       {block name="main"}{/block}
     </div>
 
-    <!-- Footer -->
-    {include file="admin/components/footer.tpl"}
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
     </aside>
+
+    <!-- Footer -->
+    {include file="admin/components/footer.tpl"}
   </div>
 
-  <!-- jQuery -->
-  <script src="/assets/admin/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="/assets/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
-    $.widget.bridge('uibutton', $.ui.button)
+    const APP_URL = "{$smarty.server.REQUEST_SCHEME}://{$smarty.server.SERVER_NAME}:{$smarty.server.SERVER_PORT}";
   </script>
-  <!-- Summernote -->
-  <script src="/assets/admin/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- jQuery -->
+  <script src="{assets path='assets/admin/plugins/jquery/jquery.min.js'}">
+  </script>
   <!-- Bootstrap 4 -->
-  <script src="/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js">
+  <script
+    src="{assets path='assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js'}">
   </script>
   <!-- AdminLTE App -->
-  <script src="/assets/admin/dist/js/adminlte.js"></script>
+  <script src="{assets path='assets/admin/js/adminlte.min.js'}"></script>
   {block name="js"}{/block}
 </body>
 
