@@ -1,12 +1,21 @@
 # LỘ TRÌNH THỰC TẬP TẠI CÔNG TY ViSafe | NHNDEV110
 
-## BÀI TẬP PHP (29/07/2024 - ??/??/2024)
+## BÀI TẬP PHP (29/07/2024 - 29/08/2024)
 
 ### Giới thiệu
 
-...
+Website tổ chức phi lợi nhuận Limitless. Gồm có các chức năng: quản lý bài viết, đăng nhập trang admin, ...
 
 ### Tài nguyên và Công nghệ Sử dụng
+
+#### Trang quản trị
+
+- **Giao diện CMS**: [AdminLTE Bootstrap Admin Dashboard Template](https://adminlte.io/)
+  - [Bootstrap](https://github.com/twbs/bootstrap) - v4.6: The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
+  - [jQuery](https://github.com/jquery/jquery) - v3.5.1+: jQuery JavaScript Library
+  - ...
+
+#### Trang người dùng
 
 - **Ngôn ngữ**: HTML5, CSS3, JavaScript ES6+, PHP v7.4
 - **Thư viện**:
