@@ -22,6 +22,15 @@ $router->mount('/blog', function () use ($router) {
 
 // Admin
 $router->mount('/admin', function () use ($router) {
+  // Middleware
+  $router->before('GET', '/.*', 'admin\AdminAuthController@authenticate');
+
+  // Login
+  $router->get('/login', 'admin\AdminAuthController@showLoginForm');
+  $router->post('/login', 'admin\AdminAuthController@login');
+
+  // Logout
+  $router->get('/logout', 'admin\AdminAuthController@logout');
 
   // Blog
   $router->mount('/blog', function () use ($router) {

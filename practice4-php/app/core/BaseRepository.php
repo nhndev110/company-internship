@@ -26,7 +26,7 @@ class BaseRepository
     }
   }
 
-  protected static function queryOneRecord(string $sql, IRowMapper $rowMapper, ...$params): object
+  protected static function queryOneRecord(string $sql, IRowMapper $rowMapper, ...$params)
   {
     $record = self::queryAllRecords($sql, $rowMapper, ...$params)[0];
     return empty($record) ? null : $record;

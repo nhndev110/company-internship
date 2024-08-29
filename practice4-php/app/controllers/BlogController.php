@@ -21,7 +21,7 @@ class BlogController extends BaseController
           $articlesDTO[] = new ArticleListDTO(
             $article,
             CategoryRepository::getOne($article->getCategoryId()),
-            UserRepository::getOne($article->getAuthorId()),
+            UserRepository::getOneById($article->getAuthorId()),
           );
         }
       }
@@ -39,7 +39,7 @@ class BlogController extends BaseController
     $articleDTO = new ArticleShowDTO(
       $article,
       CategoryRepository::getOne($article->getCategoryId()),
-      UserRepository::getOne($article->getAuthorId()),
+      UserRepository::getOneById($article->getAuthorId()),
     );
     if ($article == null) {
       die("not found article");

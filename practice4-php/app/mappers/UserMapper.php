@@ -11,7 +11,7 @@ class UserMapper implements IRowMapper
   {
     $obj = [];
     foreach ($rs as $row) {
-      $obj[] = new User($row['id'], $row['name']);
+      $obj[] = new User($row['id'], $row['name'], $row['username'], $row['password']);
     }
 
     return $obj;

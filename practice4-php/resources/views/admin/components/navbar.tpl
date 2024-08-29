@@ -131,8 +131,9 @@
           <span class="float-right text-muted text-sm">2 days</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All
-          Notifications</a>
+        <a href="#" class="dropdown-item dropdown-footer">
+          See All Notifications
+        </a>
       </div>
     </li>
     <li class="nav-item">
@@ -140,11 +141,16 @@
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar"
-        data-controlsidebar-slide="true" href="#" role="button">
-        <i class="fas fa-th-large"></i>
-      </a>
+    <li class="nav-item dropdown" style="cursor: pointer;">
+      <div class="user-panel" data-toggle="dropdown">
+        <div class="image">
+          <img src="{assets path='assets/admin/img/user2-160x160.jpg'}"
+            class="img-circle" alt="User Image">
+        </div>
+      </div>
+      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+        <a href="/admin/logout" class="dropdown-item">Logout</a>
+      </div>
     </li>
   </ul>
 </nav>

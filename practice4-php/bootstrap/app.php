@@ -4,6 +4,8 @@ define('APP_PATH', dirname(__DIR__));
 
 require_once APP_PATH . '/vendor/autoload.php';
 
+session_start();
+
 $dotenv = Dotenv\Dotenv::createImmutable(APP_PATH);
 $dotenv->load();
 

@@ -25,7 +25,7 @@ class AdminBlogController extends BaseController
         $articlesDTO[] = new ArticleListDTO(
           $article,
           CategoryRepository::getOne($article->getCategoryId()),
-          UserRepository::getOne($article->getAuthorId()),
+          UserRepository::getOneById($article->getAuthorId()),
         );
       }
     } catch (Exception $e) {
@@ -154,7 +154,7 @@ class AdminBlogController extends BaseController
       $article->getThumbnail(),
       $article->getStatus(),
       CategoryRepository::getOne($article->getCategoryId())->getId(),
-      UserRepository::getOne($article->getAuthorId())->getId(),
+      UserRepository::getOneById($article->getAuthorId())->getId(),
       array_map(fn($tag) => $tag->getId(), TagRespository::getTagsByArticleId(intval($articleId))),
     );
     $this->view("admin/edit-article.tpl", [
