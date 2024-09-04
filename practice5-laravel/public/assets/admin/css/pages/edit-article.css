@@ -1,0 +1,28 @@
+.ck-editor__editable {
+  min-height: 300px;
+}
+
+.select2-container--bootstrap4.select2-container--focus.select2-container--open
+  .select2-selection {
+  border-bottom: 1px solid #80bdff;
+}
+
+.select2-results__options .select2-results__option[aria-selected="true"] {
+  display: none;
+}
+
+#previews [data-dz-name] {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  font-size: 1.125rem;
+}
+
+/* .editable */
+/* :empty */
+/* :not(:focus) */
+/* ::before { */
+/* content: attr(data-ph) !important;
+  color: grey !important;
+} */
