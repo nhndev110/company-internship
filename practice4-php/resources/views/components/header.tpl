@@ -25,16 +25,20 @@
               <a class="nav-link" href="/">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">ABOUT US</a>
+              <a class="nav-link {$smarty.server.REQUEST_URI == '/about' ? "active" : ""}"
+                href="/about">ABOUT US</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/involved">GET INVOLVED</a>
+              <a class="nav-link {$smarty.server.REQUEST_URI == '/involved' ? "active" : ""}"
+                href="/involved">GET INVOLVED</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/blog">BLOG</a>
+              <a class="nav-link {$smarty.server.REQUEST_URI == '/blog' ? "active" : ""}"
+                href="/blog">BLOG</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact-us"> CONTACT US </a>
+              <a class="nav-link {$smarty.server.REQUEST_URI == '/contact' ? "active" : ""}"
+                href="/contact"> CONTACT US </a>
             </li>
           </ul>
           <div class="button-group">

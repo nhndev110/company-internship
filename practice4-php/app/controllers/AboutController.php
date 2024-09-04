@@ -4,10 +4,10 @@ namespace app\controllers;
 
 use app\core\BaseController;
 
-class RegisterController extends BaseController
+class AboutController extends BaseController
 {
   public function index()
   {
-    $this->view("register.tpl");
+    $this->view("about.tpl");
   }
 }

@@ -5,7 +5,6 @@ namespace app\repositories;
 use app\core\BaseRepository;
 use app\dtos\admin\CreateArticleDTO;
 use app\mappers\ArticleMapper;
-use app\mappers\ArticlesTagsMapper;
 use app\models\Article;
 use Exception;
 

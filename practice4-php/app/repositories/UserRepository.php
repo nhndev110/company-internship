@@ -32,4 +32,31 @@ class UserRepository extends BaseRepository
       throw new \Exception($e->getMessage());
     }
   }
+
+  public static function getUserByTokenRemember(string $tokenRemember)
+  {
+    try {
+      return self::queryOneRecord("SELECT * FROM users WHERE token_remember = ?", new UserMapper, $tokenRemember);
+    } catch (\Exception $e) {
+      throw new \Exception($e->getMessage());
+    }
+    return null;
+  }
+
+  public static function updateTokenRemember(int $userId, string $tokenRemember): bool
+  {
+    try {
+      return self::update(
+        "UPDATE users
+        SET
+          token_remember = ?
+        WHERE id = ?",
+        $tokenRemember,
+        $userId,
+      );
+    } catch (\Exception $e) {
+      throw new \Exception($e->getMessage());
+    }
+    return false;
+  }
 }

@@ -10,9 +10,17 @@ $router->set404(function () {
 
 $router->setNamespace('\app\controllers');
 
-$router->get('/', function () {
-  phpinfo();
-});
+$router->get('/', 'HomeController@index');
+
+$router->get('/about', 'AboutController@index');
+
+$router->get('/involved', 'InvolvedController@index');
+
+$router->get('/contact', 'ContactController@index');
+
+$router->get('/login', 'LoginController@index');
+
+$router->get('/register', 'RegisterController@index');
 
 // User
 $router->mount('/blog', function () use ($router) {
@@ -20,13 +28,20 @@ $router->mount('/blog', function () use ($router) {
   $router->get('/.*-(\d+)', 'BlogController@show');
 });
 
+
 // Admin
 $router->mount('/admin', function () use ($router) {
   // Middleware
   $router->before('GET', '/.*', 'admin\AdminAuthController@authenticate');
 
+  // admin
+  $router->get('/', function () {
+    header('Location: /admin/login');
+    exit;
+  });
+
   // Login
-  $router->get('/login', 'admin\AdminAuthController@showLoginForm');
+  $router->get('/login', 'admin\AdminAuthController@index');
   $router->post('/login', 'admin\AdminAuthController@login');
 
   // Logout

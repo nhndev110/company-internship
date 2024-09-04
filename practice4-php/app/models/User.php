@@ -8,17 +8,20 @@ class User
   private string $name;
   private string $username;
   private string $password;
+  private ?string $tokenRemember;
 
   public function __construct(
     int $id,
     string $name,
     string $username,
-    string $password
+    string $password,
+    ?string $tokenRemember
   ) {
     $this->id = $id;
     $this->name = $name;
     $this->username = $username;
     $this->password = $password;
+    $this->tokenRemember = $tokenRemember;
   }
 
   /**
@@ -97,6 +100,26 @@ class User
   public function setPassword($password)
   {
     $this->password = $password;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of tokenRemember
+   */
+  public function getTokenRemember()
+  {
+    return $this->tokenRemember;
+  }
+
+  /**
+   * Set the value of tokenRemember
+   *
+   * @return  self
+   */
+  public function setTokenRemember($tokenRemember)
+  {
+    $this->tokenRemember = $tokenRemember;
 
     return $this;
   }

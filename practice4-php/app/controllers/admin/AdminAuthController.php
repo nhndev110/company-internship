@@ -8,7 +8,7 @@ use Exception;
 
 class AdminAuthController extends BaseController
 {
-  public function showLoginForm()
+  public function index()
   {
     $this->view("admin/login.tpl");
     unset($_SESSION['msg_err']);
@@ -35,11 +35,11 @@ class AdminAuthController extends BaseController
         $_SESSION['admin'] = $user;
 
         if (isset($_POST['remember'])) {
-          $jsonAdmin = json_encode([
-            "id" => $user->getId(),
-            "name" => $user->getName(),
-          ]);
-          setcookie("admin", $jsonAdmin, time() + 60 * 60 * 24 * 60, "/");
+          $tokenRemember = uniqid($user->getId()) . "." . uniqid(time(), true);
+          $statusUpdate = UserRepository::updateTokenRemember($user->getId(), $tokenRemember);
+          if ($statusUpdate) {
+            setcookie("_rk_rm", $tokenRemember, time() + 60 * 60 * 24 * 60, "/");
+          }
         }
         header('location: /admin/blog');
         exit;
@@ -51,21 +51,21 @@ class AdminAuthController extends BaseController
 
   public function authenticate()
   {
-    if (is_numeric(strpos($_SERVER['REQUEST_URI'], '/admin/login')) && $_SERVER['REQUEST_METHOD'] === "GET") {
-      if (isset($_SESSION['admin']) || isset($_COOKIE['admin'])) {
+    $currentPath = trim($_SERVER['REQUEST_URI'], '/');
+    if ($currentPath === 'admin/login' && $_SERVER['REQUEST_METHOD'] === "GET") {
+      if (isset($_SESSION['admin']) || isset($_COOKIE['_rk_rm'])) {
         header('location: /admin/blog');
         exit;
       }
       return;
     }
 
-    if (empty($_SESSION['admin']) && empty($_COOKIE['admin'])) {
+    if (empty($_SESSION['admin']) && empty($_COOKIE['_rk_rm'])) {
       $_SESSION['msg_err'] = "You are not logged in. Please log in to continue!";
       header('location: /admin/login');
       exit;
-    } else if (isset($_COOKIE['admin'])) {
-      $adminCookie = get_object_vars(json_decode($_COOKIE['admin']));
-      $admin = UserRepository::getOneById($adminCookie['id']);
+    } else if (isset($_COOKIE['_rk_rm'])) {
+      $admin = UserRepository::getUserByTokenRemember($_COOKIE['_rk_rm']);
       $_SESSION['admin'] = $admin;
     }
   }
@@ -73,7 +73,7 @@ class AdminAuthController extends BaseController
   public function logout()
   {
     unset($_SESSION['admin']);
-    setcookie("admin", "", time() - (60 * 60 * 24 * 60), "/");
+    setcookie("_rk_rm", "", time() - (60 * 60 * 24 * 60), "/");
     header('location: /admin/login');
     exit;
   }
