@@ -6,7 +6,6 @@
       </div>
 
       <div class="header-right">
-
         <ul class="top-menu">
           <li>
             <a href="#">Links</a>
@@ -34,12 +33,26 @@
                   </div>
                 </div>
               </li>
-              <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+              @auth
+                <li>
+                  <div class="header-dropdown">
+                    <a href="/profile">{{ Auth::user()->name }}</a>
+                    <div class="header-menu">
+                      <ul>
+                        <li><a class="py-2" href="#">My Account</a></li>
+                        <li><a class="py-2" href="#">My Purchase</a></li>
+                        <li><a class="py-2" href="{{ url('logout') }}">Logout</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              @else
+                <li><a href="/login">Sign in / Sign up</a></li>
+              @endauth
             </ul>
           </li>
         </ul>
       </div>
-
     </div>
   </div>
 
@@ -94,8 +107,10 @@
 
             <div class="compare-actions">
               <a href="#" class="action-link">Clear All</a>
-              <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i
-                  class="icon-long-arrow-right"></i></a>
+              <a href="#" class="btn btn-outline-primary-2">
+                <span>Compare</span>
+                <i class="icon-long-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>

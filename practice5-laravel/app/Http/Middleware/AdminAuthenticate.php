@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAuthenticate
 {
@@ -16,16 +17,11 @@ class AdminAuthenticate
    */
   public function handle(Request $request, Closure $next)
   {
-    // if ($request->isMethod('get') && $request->is('admin/login')) {
-    //   if ($request->session()->has('user')) {
-    //     return redirect()->route('admin.dashboard');
-    //   }
-    // }
+    if (Auth::check() && Auth::user()->role_id === 1) {
+      return $next($request);
+    }
 
-    // if ($request->session()->has('user')) {
-    //   return $next($request);
-    // }
-
-    // return redirect()->route('admin.login');
+    return redirect()->route('login.index')
+      ->with("error", "Access denied. You don't have the necessary permissions to view this page.");
   }
 }
