@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminBlogController;
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminTagController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -34,5 +35,11 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
 
   Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/', [AdminBlogController::class, 'index'])->name('index');
+    Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
+    Route::post('/store', [AdminBlogController::class, 'store'])->name('store');
+  });
+
+  Route::prefix('tag')->name('tag.')->group(function () {
+    Route::post('/store', [AdminTagController::class, 'store'])->name('store');
   });
 });

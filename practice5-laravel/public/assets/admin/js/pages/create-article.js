@@ -40,7 +40,6 @@ $(function () {
       tokenSeparators: [",", " "],
       maximumSelectionLength: 5,
       placeholder: "Ex: donate, activity, ...",
-      minimumInputLength: 2,
       width: "100%",
       escapeMarkup: function (markup) {
         return markup;
@@ -80,7 +79,7 @@ $(function () {
         $.ajax({
           type: "POST",
           url: `${APP_URL}/admin/tag/store`,
-          data: { name: tag.text },
+          data: { _token: $("[name='_token']").val(), name: tag.text },
           dataType: "json",
           contentType: "application/x-www-form-urlencoded",
         })
@@ -91,10 +90,13 @@ $(function () {
                 "<option value='" + newTag.id + "'>" + newTag.name + "</option>"
               ).appendTo(_this);
 
+              // Lấy ra các tag ở input
               const selection = _this.val();
+              // Tìm vị trí của tag mới tạo trong danh sách tag
               const index = selection.indexOf(newTag.name);
 
               if (index !== 1) {
+                // Nếu như tìm ra thì gán tag đó ...
                 selection[index] = newTag.id.toString();
               }
 
@@ -130,7 +132,7 @@ $(function () {
     method: "post",
     uploadMultiple: false,
     paramName: "articleThumbnail",
-    acceptedFiles: ".jpg,.png,.jpeg,.gif,.webp",
+    acceptedFiles: ".jpg,.png,.jpeg,.webp,.svg",
     previewTemplate: previewTemplate,
     maxFilesize: 2,
     maxFiles: 1,
@@ -144,7 +146,7 @@ $(function () {
     this.addFile(file);
   });
 
-  articleThumbnail.on("addedfile", function (file) {});
+  articleThumbnail.on("addedfile", function (file) { });
 
   // Validate Create Article Form
   $.validator.addMethod("notEqualTo", function (value, element, param) {
@@ -167,7 +169,7 @@ $(function () {
     },
     rules: {
       articleTitle: { required: true, maxlength: 100, minlength: 5 },
-      articleDesc: { required: true, maxlength: 300 },
+      articleDesc: { required: true, maxlength: 500 },
       articleContent: {
         required: function () {
           articleContentEditor.updateSourceElement();
@@ -253,14 +255,15 @@ function handleSubmitCreateArticleForm(ev, articleStatus) {
   }
 
   const formData = new FormData();
-  formData.append("articleTitle", articleTitleValue);
-  formData.append("articleDesc", articleDescValue);
-  formData.append("articleContent", articleContentEditorValue);
-  formData.append("articleThumbnail", articleThumbnailValue);
-  formData.append("articleSlug", articleSlugValue);
-  formData.append("articleCategory", articleCategoryValue);
-  formData.append("articleTags", JSON.stringify(articleTagsValue));
-  formData.append("articleStatus", articleStatus);
+  formData.append("_token", $("[name='_token']").val());
+  formData.append("title", articleTitleValue);
+  formData.append("description", articleDescValue);
+  formData.append("content", articleContentEditorValue);
+  formData.append("thumbnail", articleThumbnailValue);
+  formData.append("slug", articleSlugValue);
+  formData.append("categoryId", articleCategoryValue);
+  formData.append("tags", JSON.stringify(articleTagsValue));
+  formData.append("status", articleStatus);
 
   $.ajax({
     type: "POST",
