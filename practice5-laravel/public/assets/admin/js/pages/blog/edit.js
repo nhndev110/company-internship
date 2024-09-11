@@ -1,5 +1,5 @@
-import { editorConfig, ClassicEditor } from "../ckeditor.config.js";
-import { Toast } from "../toast.config.js";
+import { editorConfig, ClassicEditor } from "../../ckeditor.config.js";
+import { Toast } from "../../toast.config.js";
 
 Dropzone.autoDiscover = false;
 
