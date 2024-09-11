@@ -13,7 +13,7 @@ class BlogController extends Controller
    */
   public function index()
   {
-    return view('blog');
+    return view('pages.blog.index');
   }
 
   /**
@@ -40,12 +40,13 @@ class BlogController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  int  $articleId
+   * @param  string  $slug
+   * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($articleSlug, $articleId)
+  public function show(string $slug, int $id)
   {
-    return view('article-detail');
+    return view('pages.blog.show');
   }
 
   /**

@@ -1,4 +1,4 @@
-import { Toast } from "../toast.config.js";
+import { Toast } from "../../toast.config.js";
 
 $(function () {
   $("#articleList").DataTable({
@@ -51,44 +51,37 @@ function handleDeleteArticle(ev) {
       $.ajax({
         type: "DELETE",
         url: `${APP_URL}/admin/blog/${articleId}`,
+        data: { _token: $("[name='_token']").val() },
         dataType: "json",
-      }).done(function (resp) {
-        if (!resp) {
-          Toast({
-            icon: "error",
-            title: "Error",
-            msg: "Something went wrong. Please reload the page or try again later.",
-          });
-        }
-
-        if (resp.status === "error") {
-          Toast({ icon: "warning", title: "Warning", msg: resp.message });
-        }
-
-        if (resp.status === "success") {
-          articleRow.fadeOut(400, function () {
-            $(this).remove();
-          });
-          Toast({ icon: "success", title: "Success", msg: resp.message });
-        }
-      });
+      })
+        .done(function (resp, statusText, jqXHR) {
+          if (jqXHR.status === 200 || jqXHR.status === 204) {
+            articleRow.fadeOut(400, function () {
+              $(this).remove();
+            });
+            Toast({ icon: "success", title: "Success", msg: resp.msg });
+          }
+        })
+        .fail(function (err) {
+          Toast({ icon: "error", title: err.statusText, msg: err.responseJSON.msg });
+        });
     }
   });
 }
 
 // handle change status article
 function handleChangeStatusArticle(ev) {
-  const articleId = $(this).data("articleId");
-  const articleNewStatus = $(this).is(":checked") ? 1 : 0;
+  const id = $(this).data("articleId");
+  const status = $(this).is(":checked") ? 1 : 0;
 
   $.ajax({
-    type: "POST",
-    url: `${APP_URL}/admin/blog/${articleId}`,
-    data: { articleStatus: articleNewStatus },
+    type: "PATCH",
+    url: `${APP_URL}/admin/blog/update-status/${id}`,
+    data: { status: status, _token: $("[name='_token']").val() },
     dataType: "json",
   })
-    .done(function (resp, status, jqXHR) {
-      if (status === "success") {
+    .done(function (resp, statusText, jqXHR) {
+      if (jqXHR.status === 200) {
         Toast({
           icon: "success",
           title: "Success",
@@ -100,6 +93,6 @@ function handleChangeStatusArticle(ev) {
       }
     })
     .fail(function (err, status, jqXHR) {
-      console.error(err);
+      Toast({ icon: "error", title: err.statusText, msg: err.responseJSON.msg });
     });
 }

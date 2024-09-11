@@ -16,6 +16,17 @@ class Article extends Model
     'slug',
     'status',
     'content',
-    'category_id'
+    'category_id',
+    'author_id'
   ];
+
+  public function category()
+  {
+    return $this->hasOne(Category::class, 'id', 'category_id');
+  }
+
+  public function author()
+  {
+    return $this->hasOne(User::class, 'id', 'author_id');
+  }
 }

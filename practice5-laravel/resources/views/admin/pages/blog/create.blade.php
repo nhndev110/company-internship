@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/admin/css/pages/create-article.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/css/pages/blog/create.css') }}">
   <style>
     .editable:empty:not(:focus)::before {
       content: attr(data-ph) !important;
@@ -22,7 +22,7 @@
   <script src="{{ asset('assets/admin/plugins/select2/js/select2.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-  <script type="module" src="{{ asset('assets/admin/js/pages/create-article.js') }}"></script>
+  <script type="module" src="{{ asset('assets/admin/js/pages/blog/create.js') }}"></script>
 @endsection
 
 @section('main')

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/admin/css/pages/blog.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/css/pages/blog/index.css') }}">
 @endsection
 
 @section('js')
@@ -22,7 +22,7 @@
   <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-  <script type="module" src="{{ asset('assets/admin/js/pages/blog.js') }}"></script>
+  <script type="module" src="{{ asset('assets/admin/js/pages/blog/index.js') }}"></script>
 @endsection
 
 @section('main')
@@ -53,6 +53,7 @@
             <div class="card-header"></div>
             <!-- /.card-header -->
             <div class="card-body">
+              @csrf
               <table id="articleList" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -75,8 +76,8 @@
                       <tr>
                         <td>
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input"
-                              id="article-{{ $article->id }}-checkbox" />
+                            <input type="checkbox" class="custom-control-input" id="article-{{ $article->id }}-checkbox"
+                              value="{{ $article->id }}" />
                             <label for="article-{{ $article->id }}-checkbox" class="custom-control-label"></label>
                           </div>
                         </td>
@@ -84,7 +85,7 @@
                           <a target="_blank"
                             href="{{ route('blog.show', ['slug' => $article->slug, 'id' => $article->id]) }}"
                             class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/blog/articles/') . $article->thumbnail }}"
+                            <img src="{{ asset('/') . 'storage/articles/' . $article->thumbnail }}"
                               alt="{{ $article->title }}" class="rounded"
                               style="height: 100px; width: 100px; object-fit: cover; object-position: center;">
                             <p class="ml-3">{{ $article->title }}</p>
@@ -97,8 +98,8 @@
                             <label class="custom-control-label" for="statusSwitch{{ $article->id }}"></label>
                           </div>
                         </td>
-                        <td>{{ $article->getCategoryName() }}</td>
-                        <td>{{ $article->getAuthorName() }}</td>
+                        <td>{{ $article->category->name }}</td>
+                        <td>{{ $article->author->name }}</td>
                         <td>
                           <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">

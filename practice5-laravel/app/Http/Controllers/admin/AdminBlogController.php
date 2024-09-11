@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class AdminBlogController extends Controller
 {
@@ -17,7 +21,9 @@ class AdminBlogController extends Controller
    */
   public function index()
   {
-    return response(view('admin.blog'));
+    $articles = Article::with('category', 'author')->get();
+
+    return response()->view('admin.pages.blog.index', ['articles' => $articles]);
   }
 
   /**
@@ -29,7 +35,7 @@ class AdminBlogController extends Controller
   {
     $categories = Category::all();
     $tags = Tag::all();
-    return view('admin.create-article', ['categories' => $categories, 'tags' => $tags]);
+    return view('admin.pages.blog.create', ['categories' => $categories, 'tags' => $tags]);
   }
 
   /**
@@ -51,7 +57,9 @@ class AdminBlogController extends Controller
       'categoryId' => 'required|numeric|gt:0|exists:categories,id'
     ]);
 
-    $thumbnailPath = $request->file('thumbnail')->store('articles');
+    $userId = Auth::user()->id;
+
+    $thumbnailPath = $request->file('thumbnail')->store('public/articles');
 
     $thumbnailName = substr($thumbnailPath, strlen("articles/"));
 
@@ -64,6 +72,7 @@ class AdminBlogController extends Controller
     $article->status = $request->input('status');
     $article->content = $request->input('content');
     $article->category_id = $request->input('categoryId');
+    $article->author_id = $userId;
 
     $statusSave = $article->save();
 
@@ -123,6 +132,21 @@ class AdminBlogController extends Controller
     //
   }
 
+  public function updateStatus(Request $request, $id)
+  {
+    try {
+      Article::where('id', $id)->first()->update(['status' => $request->input('status')]);
+
+      return response()->json([
+        'msg' => 'Article status updated successfully'
+      ], 200);
+    } catch (Exception $e) {
+      return response()->json([
+        'msg' => $e->getMessage()
+      ], 500);
+    }
+  }
+
   /**
    * Remove the specified resource from storage.
    *
@@ -131,6 +155,21 @@ class AdminBlogController extends Controller
    */
   public function destroy($id)
   {
-    //
+    try {
+      $thumbnailName = Article::where('id', $id)->first()->thumbnail;
+      Article::where('id', $id)->delete();
+      if (Storage::disk('public')->exists('articles/' . $thumbnailName)) {
+        Storage::disk('public')->delete('articles/' . $thumbnailName);
+      } else {
+        return response()->json(['msg' => 'Thumbnail not found'], 200);
+      }
+      return response()->json([
+        'msg' => 'The article has been deleted successfully'
+      ], 204);
+    } catch (Exception $e) {
+      return response()->json([
+        'msg' => $e->getMessage()
+      ], 500);
+    }
   }
 }
