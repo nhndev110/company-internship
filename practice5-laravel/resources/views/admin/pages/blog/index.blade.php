@@ -26,34 +26,18 @@
 @endsection
 
 @section('main')
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Blog</h1>
-        </div>
-        <div class="col-sm-6">
-          <div class="float-sm-right">
-            <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">
-              <i class="fas fa-plus-circle mr-1"></i>
-              Add New
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header"></div>
-            <!-- /.card-header -->
             <div class="card-body">
-              @csrf
+              <div class="actions mb-2">
+                <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">
+                  <i class="fas fa-plus-circle mr-1"></i>
+                  Add New
+                </a>
+              </div>
               <table id="articleList" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -106,7 +90,7 @@
                             <i class="fas fa-ellipsis-h"></i>
                           </button>
                           <div class="dropdown-menu" role="menu">
-                            <a href="/blog/{{ $article->id }}/edit" class="dropdown-item">
+                            <a href="{{ route('admin.blog.edit', ['id' => $article->id]) }}" class="dropdown-item">
                               <i class="fas fa-edit"></i>
                               Edit
                             </a>

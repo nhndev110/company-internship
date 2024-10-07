@@ -83,8 +83,8 @@ $(function () {
           dataType: "json",
           contentType: "application/x-www-form-urlencoded",
         })
-          .done(function (resp) {
-            if (resp.status === "success") {
+          .done(function (resp, statusText, jqXHR) {
+            if (jqXHR.status === 201) {
               const newTag = resp.data;
               $(
                 "<option value='" + newTag.id + "'>" + newTag.name + "</option>"
@@ -103,8 +103,8 @@ $(function () {
               _this.val(selection).trigger("change");
             }
           })
-          .fail(function (error, textStatus, jqXHR) {
-            console.error(error.responseText);
+          .fail(function (err, textStatus, jqXHR) {
+            Toast({ icon: "error", title: err.statusText, msg: err.responseJSON.msg });
           });
       }
     })
@@ -145,8 +145,6 @@ $(function () {
     this.removeAllFiles();
     this.addFile(file);
   });
-
-  articleThumbnail.on("addedfile", function (file) { });
 
   // Validate Create Article Form
   $.validator.addMethod("notEqualTo", function (value, element, param) {
@@ -255,7 +253,6 @@ function handleSubmitCreateArticleForm(ev, articleStatus) {
   }
 
   const formData = new FormData();
-  formData.append("_token", $("[name='_token']").val());
   formData.append("title", articleTitleValue);
   formData.append("description", articleDescValue);
   formData.append("content", articleContentEditorValue);
@@ -270,6 +267,7 @@ function handleSubmitCreateArticleForm(ev, articleStatus) {
     url: `${APP_URL}/admin/blog/store`,
     data: formData,
     dataType: "json",
+    headers: { 'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content') },
     contentType: "application/json",
     cache: false,
     contentType: false,

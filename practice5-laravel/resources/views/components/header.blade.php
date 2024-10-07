@@ -39,6 +39,9 @@
                     <a href="/profile">{{ Auth::user()->name }}</a>
                     <div class="header-menu">
                       <ul>
+                        @if (Auth::user()->role_id === 1)
+                          <li><a href="{{ route('admin.dashboard.index') }}" target="_blank">Admin</a></li>
+                        @endif
                         <li><a class="py-2" href="#">My Account</a></li>
                         <li><a class="py-2" href="#">My Purchase</a></li>
                         <li><a class="py-2" href="{{ url('logout') }}">Logout</a></li>
@@ -84,37 +87,6 @@
       </div>
 
       <div class="header-right">
-        <div class="dropdown compare-dropdown">
-          <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
-            <div class="icon">
-              <i class="icon-random"></i>
-            </div>
-            <p>Compare</p>
-          </a>
-
-          <div class="dropdown-menu dropdown-menu-right">
-            <ul class="compare-products">
-              <li class="compare-product">
-                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
-              </li>
-              <li class="compare-product">
-                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
-              </li>
-            </ul>
-
-            <div class="compare-actions">
-              <a href="#" class="action-link">Clear All</a>
-              <a href="#" class="btn btn-outline-primary-2">
-                <span>Compare</span>
-                <i class="icon-long-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
         <div class="wishlist">
           <a href="wishlist.html" title="Wishlist">
             <div class="icon">
@@ -186,8 +158,8 @@
             </div>
 
             <div class="dropdown-cart-action">
-              <a href="cart.html" class="btn btn-primary">View Cart</a>
-              <a href="checkout.html" class="btn btn-outline-primary-2">
+              <a href="{{ route('cart.index') }}" class="btn btn-primary">View Cart</a>
+              <a href="checkout" class="btn btn-outline-primary-2">
                 <span>Checkout</span>
                 <i class="icon-long-arrow-right"></i>
               </a>

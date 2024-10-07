@@ -4,7 +4,7 @@ $(function () {
   $("#articleList").DataTable({
     paging: true,
     lengthChange: false,
-    searching: true,
+    searching: false,
     ordering: true,
     info: true,
     autoWidth: false,
@@ -76,7 +76,7 @@ function handleChangeStatusArticle(ev) {
 
   $.ajax({
     type: "PATCH",
-    url: `${APP_URL}/admin/blog/update-status/${id}`,
+    url: `${APP_URL}/admin/blog/${id}/update-status`,
     data: { status: status, _token: $("[name='_token']").val() },
     dataType: "json",
   })

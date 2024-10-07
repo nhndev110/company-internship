@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,28 +15,12 @@ class BlogController extends Controller
    */
   public function index()
   {
-    return view('pages.blog.index');
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
-  {
-    //
+    $categories = Category::all(['name']);
+    $articles = Article::with('category')->where('status', 1)->get();
+    return view('pages.blog.index', [
+      'categories' => $categories,
+      'articles' => $articles
+    ]);
   }
 
   /**
@@ -46,40 +32,15 @@ class BlogController extends Controller
    */
   public function show(string $slug, int $id)
   {
-    return view('pages.blog.show');
-  }
+    $article = Article::with('author', 'category', 'tags')
+      ->where('id', $id)
+      ->where('status', 1)
+      ->first();
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id)
-  {
-    //
-  }
+    if (empty($article)) {
+      return redirect()->route('404');
+    }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-    //
+    return response()->view('pages.blog.show', ["article" => $article]);
   }
 }

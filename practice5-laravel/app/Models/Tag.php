@@ -19,4 +19,9 @@ class Tag extends Model
    * @var bool
    */
   public $timestamps = false;
+
+  public function articles()
+  {
+    return $this->belongsToMany(Article::class, 'articles_tags', 'article_id', 'tag_id');
+  }
 }

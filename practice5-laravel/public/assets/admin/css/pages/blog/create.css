@@ -2,8 +2,7 @@
   min-height: 300px;
 }
 
-.select2-container--bootstrap4.select2-container--focus.select2-container--open
-  .select2-selection {
+.select2-container--bootstrap4.select2-container--focus.select2-container--open .select2-selection {
   border-bottom: 1px solid #80bdff;
 }
 
@@ -18,11 +17,3 @@
   max-width: 100%;
   font-size: 1.125rem;
 }
-
-/* .editable */
-/* :empty */
-/* :not(:focus) */
-/* ::before { */
-/* content: attr(data-ph) !important;
-  color: grey !important;
-} */

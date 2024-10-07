@@ -27,25 +27,17 @@
 
 @section('main')
   <form action="" id="createArticleForm" method="post">
-    @csrf
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Add a new Article</h1>
-          </div>
-          <div class="col-sm-6">
-            <div class="float-sm-right">
-              <button type="reset" class="btn btn-outline-secondary font-weight-bold mr-2">Discard</button>
-              <button type="button" class="btn btn-outline-primary font-weight-bold mr-2" id="btn-save-draft">Save
-                draft</button>
-              <button type="submit" class="btn-publish-article btn btn-primary font-weight-bold">Publish article</button>
-            </div>
-          </div>
-        </div>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-end mb-4">
+        <button type="reset" class="btn btn-outline-secondary font-weight-bold mr-2">Discard</button>
+        <button type="button" class="btn btn-outline-primary font-weight-bold mr-2" id="btn-save-draft">
+          Save draft
+        </button>
+        <button type="submit" class="btn-publish-article btn btn-primary font-weight-bold">
+          Publish article
+        </button>
       </div>
-    </section>
-
+    </div>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -110,7 +102,8 @@
                 <div class="actions">
                   <div class="dropzone border-0 bg-light fileinput-button" id="articleThumbnail">
                     <div class="dz-message" data-dz-message>
-                      <i class="mr-2 fas fa-upload"></i> Drop your files here
+                      <i class="mr-2 fas fa-upload"></i>
+                      <span>Drop your files here</span>
                     </div>
                   </div>
                 </div>

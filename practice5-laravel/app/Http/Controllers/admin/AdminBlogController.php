@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 
 class AdminBlogController extends Controller
 {
@@ -61,7 +61,7 @@ class AdminBlogController extends Controller
 
     $thumbnailPath = $request->file('thumbnail')->store('public/articles');
 
-    $thumbnailName = substr($thumbnailPath, strlen("articles/"));
+    $thumbnailName = substr($thumbnailPath, strlen("public/articles/"));
 
     $article = new Article;
 
@@ -75,6 +75,10 @@ class AdminBlogController extends Controller
     $article->author_id = $userId;
 
     $statusSave = $article->save();
+
+    $articleTags = json_decode($request->tags);
+
+    $article->tags()->attach($articleTags);
 
     if (!$statusSave) {
       return response()->json(['status' => 'fail']);
@@ -109,6 +113,21 @@ class AdminBlogController extends Controller
     //
   }
 
+  public function showThumbnailInfo($id)
+  {
+    $article = Article::where('id', $id)->first(['thumbnail']);
+
+    $thumbnailName = $article->thumbnail;
+
+    $thumbnailInfo = [
+      'name' => $thumbnailName,
+      'size' => Storage::disk("public")->size("articles/" . $thumbnailName),
+      'url' => Storage::url("articles/" . $thumbnailName)
+    ];
+
+    return response()->json($thumbnailInfo, 200);
+  }
+
   /**
    * Show the form for editing the specified resource.
    *
@@ -117,7 +136,19 @@ class AdminBlogController extends Controller
    */
   public function edit($id)
   {
-    //
+    $article = Article::with('category', 'author', 'tags')->where('id', $id)->first();
+    $categories = Category::all()->map(function ($category) use ($article) {
+      return ['details' => $category, 'is_active' => $category->id === $article->category->id];
+    });
+    $tags = Tag::all()->map(function ($tag) use ($article) {
+      return ['details' => $tag, 'is_active' => $article->tags->contains('id', $tag->id)];
+    });
+
+    return response()->view('admin.pages.blog.edit', [
+      'article' => $article,
+      'categories' => $categories,
+      'tags' => $tags
+    ]);
   }
 
   /**
@@ -129,7 +160,60 @@ class AdminBlogController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //
+    try {
+      $validator = Validator::make($request->all(), [
+        'title' => 'required|string|max:100|min:5',
+        'description' => 'required|string|max:500',
+        'thumbnail' => 'image|mimes:png,jpg,webp,svg,jpeg|max:2048',
+        'slug' => 'required|max:150|string',
+        'status' => 'required|numeric',
+        'content' => 'required|string',
+        'tags' => 'required',
+        'category' => 'required|numeric|gt:0|exists:categories,id'
+      ]);
+
+      if ($validator->fails()) {
+        return response()->json(['msg' => $validator->errors()->first()], 422);
+      }
+
+
+      $validated = $validator->validated();
+
+      $oldArticle = Article::find($id);
+      $oldThumbnailName = $oldArticle->thumbnail;
+
+      // Gán tên thumbnail mới bằng tên thumbnail cũ trong db
+      $newThumbnailName = $oldThumbnailName;
+
+      // Kiểm tra trong mảng dữ liệu đã được xác thực có trường thumbnail không
+      if (isset($validated["thumbnail"])) {
+        $newThumbnail = $validated["thumbnail"];
+        $newThumbnailName = $newThumbnail->getClientOriginalName();
+
+        if ($newThumbnailName !== $oldThumbnailName) {
+          $thumbnailPath = $newThumbnail->store('public/articles');
+          $newThumbnailName = basename($thumbnailPath);
+          Storage::disk('public')->delete('articles/' . $oldThumbnailName);
+        }
+      }
+
+      $oldArticle->tags()->detach();
+      $oldArticle->tags()->attach(json_decode($validated['tags']));
+
+      Article::find($id)->update([
+        'title' => $validated['title'],
+        'description' => $validated['description'],
+        'content' => $validated['content'],
+        'thumbnail' => $newThumbnailName,
+        'slug' => $validated['slug'],
+        'status' => $validated['status'],
+        'category_id' => $validated['category'],
+      ]);
+
+      return response()->json(['msg' => 'Article updated successfully'], 200);
+    } catch (Exception $e) {
+      return response()->json(['msg' => $e->getMessage()], $e->getCode());
+    }
   }
 
   public function updateStatus(Request $request, $id)

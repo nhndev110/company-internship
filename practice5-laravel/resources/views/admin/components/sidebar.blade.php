@@ -10,11 +10,23 @@
       <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-child-indent" data-widget="treeview"
         role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="/admin/blog" class="nav-link {{ request()->is('admin/blog') ? 'active' : '' }}">
+          <a href="{{ route('admin.dashboard.index') }}"
+            class="nav-link {{ !request()->is('admin/dashboard') ?: 'active' }}">
             <i class="nav-icon fas fa-th"></i>
-            <p>
-              Blog
-            </p>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.blog.index') }}" class="nav-link {{ !request()->is('admin/blog') ?: 'active' }}">
+            <i class="nav-icon fas fa-th"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.products.index') }}"
+            class="nav-link {{ !request()->is('admin/products') ?: 'active' }}">
+            <i class="nav-icon fas fa-th"></i>
+            <span>Products</span>
           </a>
         </li>
       </ul>

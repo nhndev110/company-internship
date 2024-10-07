@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -31,6 +30,10 @@ class LoginController extends Controller
 
     if (Auth::attempt($credentials)) {
       $request->session()->regenerate();
+
+      if (Auth::user()->role_id === 1) {
+        return redirect()->route('admin.dashboard.index');
+      }
 
       return redirect()->intended('/');
     }

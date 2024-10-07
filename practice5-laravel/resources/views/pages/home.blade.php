@@ -3,13 +3,12 @@
 @section('title', 'Molla - Bootstrap eCommerce Template')
 
 @section('plugin-css')
-  <link rel="stylesheet" href="{{ asset('assets/css/plugins/owl-carousel/owl.carousel.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery.countdown.css') }}">
 @endsection
 
 @section('css')
-
+  <link rel="stylesheet" href="{{ asset('assets/css/pages/home.min.css') }}">
 @endsection
 
 @section('plugin-js')

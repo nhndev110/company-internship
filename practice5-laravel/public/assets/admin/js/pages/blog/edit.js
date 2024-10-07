@@ -41,7 +41,6 @@ $(function () {
       tokenSeparators: [",", " "],
       maximumSelectionLength: 5,
       placeholder: "Ex: donate, activity, ...",
-      minimumInputLength: 2,
       width: "100%",
       escapeMarkup: function (markup) {
         return markup;
@@ -81,12 +80,12 @@ $(function () {
         $.ajax({
           type: "POST",
           url: `${APP_URL}/admin/tag/store`,
-          data: { name: tag.text },
+          data: { _token: $("[name='_token']").val(), name: tag.text },
           dataType: "json",
           contentType: "application/x-www-form-urlencoded",
         })
-          .done(function (resp) {
-            if (resp.status === "success") {
+          .done(function (resp, statusText, jqXHR) {
+            if (jqXHR.status === 201) {
               const newTag = resp.data;
               $(
                 "<option value='" + newTag.id + "'>" + newTag.name + "</option>"
@@ -102,8 +101,8 @@ $(function () {
               _this.val(selection).trigger("change");
             }
           })
-          .fail(function (error, textStatus, jqXHR) {
-            console.error(error.responseText);
+          .fail(function (err, textStatus, jqXHR) {
+            Toast({ icon: "error", title: err.statusText, msg: err.responseJSON.msg });
           });
       }
     })
@@ -147,23 +146,19 @@ $(function () {
 
   // TODO: Get information thumbnail
   $.getJSON(
-    `${APP_URL}/admin/blog/${articleId}`,
+    `${APP_URL}/admin/blog/${articleId}/show-thumbnail-info`,
     function (resp, status, jqXHR) {
-      if (resp.status === "success") {
-        $.get(
-          `${APP_URL}/assets/img/blog/articles/${resp.data.thumbnail}`,
-          function (respText, status, jqXHR) {
-            let mockFile = {
-              name: resp.data.thumbnail,
-              size: respText.length,
-              accepted: true, // this is required to set maxFiles count automatically
-            };
-            articleThumbnail.files.push(mockFile);
-            articleThumbnail.displayExistingFile(
-              mockFile,
-              `${APP_URL}/assets/img/blog/articles/${resp.data.thumbnail}`
-            );
-          }
+      if (jqXHR.status === 200) {
+        const mockFile = {
+          name: resp.name,
+          size: resp.size,
+          accepted: true, // this is required to set maxFiles count automatically
+          status: "show"
+        };
+        articleThumbnail.files.push(mockFile);
+        articleThumbnail.displayExistingFile(
+          mockFile,
+          resp.url
         );
       }
     }
@@ -273,27 +268,30 @@ function handleUpdateArticle(ev, articleStatus) {
   }
 
   const formData = new FormData();
-  formData.append("articleTitle", articleTitleValue);
-  formData.append("articleDesc", articleDescValue);
-  formData.append("articleContent", articleContentEditorValue);
-  formData.append("articleThumbnail", articleThumbnailValue);
-  formData.append("articleSlug", articleSlugValue);
-  formData.append("articleCategory", articleCategoryValue);
-  formData.append("articleTags", JSON.stringify(articleTagsValue));
-  formData.append("articleStatus", articleStatus);
+  formData.append("title", articleTitleValue);
+  formData.append("description", articleDescValue);
+  formData.append("content", articleContentEditorValue);
+  if (articleThumbnailValue.status === "added") {
+    formData.append("thumbnail", articleThumbnailValue);
+  }
+  formData.append("slug", articleSlugValue);
+  formData.append("category", articleCategoryValue);
+  formData.append("tags", JSON.stringify(articleTagsValue));
+  formData.append("status", articleStatus);
 
   $.ajax({
     type: "POST",
-    url: `${APP_URL}/admin/blog/${articleId}`,
+    url: `${APP_URL}/admin/blog/${articleId}?_method=PATCH`,
     data: formData,
     dataType: "json",
     contentType: "application/json",
+    headers: { 'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content') },
     cache: false,
     contentType: false,
     processData: false,
   })
     .done(function (resp, textStatus, jqXHR) {
-      if (resp.status === "success") {
+      if (jqXHR.status === 200) {
         Swal.fire({
           title: resp.msg,
           text: "Would you like to add another article?",
@@ -310,7 +308,7 @@ function handleUpdateArticle(ev, articleStatus) {
         });
       }
     })
-    .fail(function (error, textStatus, jqXHR) {
-      console.error(error.responseText);
+    .fail(function (err, textStatus, jqXHR) {
+      Toast({ icon: "error", title: err.statusText, msg: err.responseJSON.msg });
     });
 }
