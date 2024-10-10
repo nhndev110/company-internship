@@ -17,10 +17,11 @@ return new class extends Migration
       $table->id();
       $table->string('name');
       $table->text('description')->nullable();
-      $table->string('unit');
       $table->decimal('price', 15, 2);
+      $table->integer('discount')->nullable();
       $table->string('image')->nullable();
-      $table->boolean('is_selling')->nullable();
+      $table->integer('total_stock_qty');
+      $table->tinyInteger('visibility')->unsigned()->nullable();
       $table->foreignId('product_category_id')
         ->nullable()
         ->constrained()

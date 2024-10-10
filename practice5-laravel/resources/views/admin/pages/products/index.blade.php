@@ -80,37 +80,72 @@
             <table class="table table-hover">
               <thead class="thead-light">
                 <tr>
-                  <th style="width: 50px;">Thumbnail</th>
-                  <th style="width: 50%">Name</th>
+                  <th>
+                    <input type="checkbox">
+                  </th>
+                  <th>Product</th>
                   <th>Price</th>
                   <th>Discount</th>
-                  <th>Is Selling</th>
+                  <th>Visibility</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="align-middle">
-                    <img src="{{ asset('assets/images/no-image.png') }}" width="100%">
+                    <input type="checkbox">
                   </td>
-                  <td class="align-middle">iPhone 15 Pro Max</td>
-                  <td class="align-middle">$25.000</td>
+                  <td class="align-middle">
+                    <div class="row align-items-center">
+                      <div class="col-2">
+                        <img src="{{ asset('assets/images/no-image.png') }}" class="w-100">
+                      </div>
+                      <div class="col-10">
+                        <span>iPhone 15 Pro Max</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="align-middle">$25.00</td>
                   <td class="align-middle">60%</td>
                   <td class="align-middle">
-                    <span class="badge badge-primary badge-pill px-2">Selling</span>
+                    <span class="badge badge-primary badge-pill px-2">Pushlish</span>
                   </td>
                   <td class="align-middle">
-                    <a href="" class="btn btn-primary btn-xs p-2">
+                    <button class="btn btn-primary btn-xs p-2">
                       <i class="far fa-edit"></i>
                       <span class="ml-1">Edit</span>
-                    </a>
-                    <a href="" class="btn btn-default btn-xs p-2">
+                    </button>
+                    <button class="btn btn-danger btn-xs p-2">
                       <i class="far fa-trash-alt"></i>
-                    </a>
+                    </button>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <div class="d-flex justify-content-between">
+              <p class="m-0">
+                Showing 1 to 10 of 256 entries
+              </p>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link">
+                      <i class="fas fa-chevron-left"></i>
+                      <span class="ml-1">Back</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      <span class="mr-1">Next</span>
+                      <i class="fas fa-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>

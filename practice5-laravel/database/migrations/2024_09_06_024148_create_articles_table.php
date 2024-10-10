@@ -21,6 +21,14 @@ return new class extends Migration
       $table->string('slug', 150);
       $table->tinyInteger('status');
       $table->text('content');
+      $table->foreignId('category_id')
+        ->constrained()
+        ->onUpdate('cascade')
+        ->onDelete('cascade');
+      $table->foreignId('author_id')
+        ->constrained('users')
+        ->onUpdate('cascade')
+        ->onDelete('cascade');
       $table->timestamps();
     });
   }

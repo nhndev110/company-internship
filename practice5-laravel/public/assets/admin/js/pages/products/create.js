@@ -18,6 +18,8 @@ $(function () {
     });
 
   handleAddAttribute();
+  handleCreateCategory();
+  handleChangeVisibility();
 });
 
 function handleAddAttribute() {
@@ -26,10 +28,10 @@ function handleAddAttribute() {
     const productAttribute = $(
       `<div class="product-attribute row align-items-start justify-content-between" style="display: none;">
         <div class="col-1">
-          <button class="btn btn-default btn-sm handle mb-2">
+          <button class="btn btn-default btn-sm handle mb-2" type="button">
             <i class="fas fa-arrows-alt" aria-hidden="true"></i>
           </button>
-          <button class="btn delete-attribute btn-danger btn-sm">
+          <button class="btn delete-attribute btn-danger btn-sm" type="button">
             <i class="fas fa-trash" aria-hidden="true"></i>
           </button>
         </div>
@@ -39,9 +41,15 @@ function handleAddAttribute() {
             <input class="form-control" placeholder="Enter options">
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-4">
           <div class="form-group">
             <label for="">Value</label>
+            <input class="form-control" placeholder="Enter value">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="">Stock Qty</label>
             <input class="form-control" placeholder="Enter value">
           </div>
         </div>
@@ -56,5 +64,19 @@ function handleAddAttribute() {
 function handleRemoveAttribute() {
   $(this).closest(".product-attribute").fadeOut(350, function () {
     $(this).remove();
+  });
+}
+
+function handleCreateCategory() {
+
+}
+
+function handleChangeVisibility() {
+  $("[name='productVisibility']").change(function (ev) {
+    if ($(this).val() == 0) {
+      $(".scheduled-input").fadeIn(350);
+    } else {
+      $(".scheduled-input").fadeOut(350);
+    }
   });
 }
