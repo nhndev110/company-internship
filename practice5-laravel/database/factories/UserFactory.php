@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserFactory extends Factory
 {
-  protected $password = "123456789";
+  protected static $password = "123456789";
 
   /**
    * Define the model's default state.
@@ -21,10 +21,10 @@ class UserFactory extends Factory
   public function definition()
   {
     return [
-      'name' => fake()->name(),
+      'name' => fake()->unique()->name(),
       'email' => fake()->unique()->safeEmail(),
-      'username' => static::$password ??= fake()->userName(),
-      'password' => Hash::make('password'),
+      'username' => fake()->unique()->userName(),
+      'password' => Hash::make(static::$password),
       'role_id' => fake()->randomElement(Role::all())->id,
     ];
   }

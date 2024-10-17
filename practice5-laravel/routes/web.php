@@ -57,6 +57,9 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
   Route::prefix('products')->name('products.')->group(function () {
     Route::get('/', [AdminProductController::class, 'index'])->name('index');
     Route::get('/create', [AdminProductController::class, 'create'])->name('create');
+    Route::post('/', [AdminProductController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [AdminProductController::class, 'edit'])->name('edit');
+    Route::delete('/{id}', [AdminProductController::class, 'destroy'])->name('destroy');
   });
 
   Route::prefix('tag')->name('tag.')->group(function () {

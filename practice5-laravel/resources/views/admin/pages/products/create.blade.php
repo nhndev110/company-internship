@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/ckeditor5/ckeditor5.css') }}">
   <link rel="stylesheet"
     href="{{ asset('assets/admin/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/dropzone/dropzone.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/css/pages/products/create.css') }}">
   <style>
@@ -19,6 +21,7 @@
 @section('js')
   <script src="{{ asset('assets/admin/plugins/dropzone/dropzone.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/moment/moment-with-locales.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/plugins/select2/js/select2.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/sortable/Sortable.min.js') }}"></script>
   <script type="module" src="{{ asset('assets/admin/js/pages/products/create.js') }}"></script>
@@ -34,6 +37,7 @@
       url: "xxx.com",
       method: "post",
       uploadMultiple: true,
+      files: true,
       paramName: "productImages",
       acceptedFiles: ".jpg,.png,.jpeg,.webp,.svg",
       previewTemplate: previewTemplate,
@@ -66,13 +70,20 @@
       "showTodayButton": true,
       "format": "MM/DD/YYYY hh:mm:ss A",
     });
+
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    }).on("select2:open", function(ev) {
+      $(`[aria-controls="select2-${ev.target.id}-results"]`)[0].focus();
+    });
   </script>
 @endsection
 
 @section('main')
   <div class="content">
     <div class="container-fluid">
-      <form action="" method="POST">
+      <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="row">
           <div class="col-12 col-lg-8">
             <div class="card card-primary card-outline">
@@ -82,7 +93,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="productName">Name</label>
-                  <input autofocus type="text" class="form-control" id="productName" placeholder="Enter product name">
+                  <input type="text" class="form-control" id="productName" placeholder="Enter product name">
                 </div>
 
                 <div class="form-group">
@@ -100,14 +111,14 @@
                   </div>
                   <div class="col-4">
                     <div class="form-group">
-                      <label for="productPrice">Discount (%)</label>
+                      <label for="productDiscount">Discount (%)</label>
                       <input type="number" class="form-control" id="productDiscount" name="productDiscount"
                         placeholder="Enter discount">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
-                      <label for="productPrice">Discount Price</label>
+                      <label for="productDiscountPrice">Discount Price</label>
                       <input readonly type="number" class="form-control" name="productDiscountPrice"
                         id="productDiscountPrice">
                     </div>
@@ -218,11 +229,11 @@
                 <div class="form-group">
                   <label for="category">Category</label>
                   <div class="input-group">
-                    <select class="custom-select" id="category" name="category">
-                      <option selected>---- Select Category ----</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <select class="custom-select select2bs4" id="category" name="category">
+                      <option value="" selected>---- Select Category ----</option>
+                      @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      @endforeach
                     </select>
                     <div class="input-group-append">
                       <button class="btn btn-primary" data-toggle="modal" data-target="#createCategoryModal"
@@ -234,22 +245,22 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Supplier</label>
-                  <select class="custom-select">
-                    <option selected>---- Select Supplier ----</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                  <label for="supplier">Supplier</label>
+                  <select class="custom-select select2bs4" name="supplier" id="supplier">
+                    <option value="" selected>---- Select Supplier ----</option>
+                    @foreach ($suppliers as $supplier)
+                      <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                    @endforeach
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label>Brand</label>
-                  <select class="custom-select">
-                    <option selected>---- Select Brand ----</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                  <label for="brand">Brand</label>
+                  <select class="custom-select select2bs4" name="brand" id="brand">
+                    <option value="" selected>---- Select Brand ----</option>
+                    @foreach ($brands as $brand)
+                      <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                    @endforeach
                   </select>
                 </div>
 
@@ -272,7 +283,7 @@
                   </div>
                   <div class="scheduled-input form-group mt-3" style="display: none">
                     <div class="input-group datetimepicker date">
-                      <input type="text" class="form-control" required />
+                      <input type="text" class="form-control" />
                       <div class="input-group-addon input-group-append">
                         <div class="input-group-text">
                           <i class="fa fa-calendar"></i>

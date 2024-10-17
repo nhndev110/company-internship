@@ -19,6 +19,10 @@
     .dropdown-toggle::after {
       display: none;
     }
+
+    .small {
+      font-size: 100%;
+    }
   </style>
 </head>
 
@@ -33,7 +37,7 @@
 
     @include('admin.components.sidebar')
 
-    <div class="content-wrapper">
+    <div class="content-wrapper pb-4">
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
